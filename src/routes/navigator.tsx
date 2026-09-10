@@ -96,7 +96,7 @@ function NavigatorPage() {
       setTyping(true);
       const t2 = setTimeout(() => {
         setTyping(false);
-        push("assistant", result.questions[0].question);
+        push("assistant", result.questions[0]?.question ?? "");
       }, 700);
       timers.current.push(t2);
     }, 1000);
@@ -114,7 +114,7 @@ function NavigatorPage() {
 
     if (next < plan.questions.length) {
       setQuestionIndex(next);
-      say(plan.questions[next].question, 800);
+      say(plan.questions[next]?.question ?? "", 800);
       return;
     }
 
@@ -282,12 +282,12 @@ function NavigatorPage() {
                 <Link to="/emergency">Emergency Information</Link>
               </Button>
               <Button asChild variant="quiet" size="lg">
-                <a href={`tel:${BRANCHES[0].phone.replace(/\s/g, "")}`}>
+                <a href={`tel:${BRANCHES[0]!.phone.replace(/\s/g, "")}`}>
                   <Phone className="size-4" /> Call Medical Center
                 </a>
               </Button>
               <Button asChild variant="quiet" size="lg">
-                <a href={BRANCHES[0].directions} target="_blank" rel="noreferrer">
+                <a href={BRANCHES[0]!.directions} target="_blank" rel="noreferrer">
                   <MapPin className="size-4" /> Get Directions
                 </a>
               </Button>

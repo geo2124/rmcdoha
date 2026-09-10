@@ -58,9 +58,9 @@ function AdminDoctors() {
                   <p className="text-xs text-muted-foreground">Digital appointments (30 days)</p>
                   <div className="mt-1.5 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
                     <div className="h-2 overflow-hidden rounded-full bg-muted">
-                      <div className="brand-gradient h-full rounded-full" style={{ width: `${(DOCTOR_LOAD[d.id] / 50) * 100}%` }} />
+                      <div className="brand-gradient h-full rounded-full" style={{ width: `${((DOCTOR_LOAD[d.id] ?? 0) / 50) * 100}%` }} />
                     </div>
-                    <span className="text-xs font-bold">{DOCTOR_LOAD[d.id]}</span>
+                    <span className="text-xs font-bold">{DOCTOR_LOAD[d.id] ?? 0}</span>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">

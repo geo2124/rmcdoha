@@ -113,7 +113,7 @@ export function FunnelBars({ data }: { data: { stage: string; value: number }[] 
     <ol className="grid gap-3">
       {data.map((row, i) => {
         const pct = (row.value / max) * 100;
-        const stepPct = i === 0 ? 100 : (row.value / data[i - 1].value) * 100;
+        const stepPct = i === 0 ? 100 : (row.value / data[i - 1]!.value) * 100;
         return (
           <li key={row.stage}>
             <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3">

@@ -8,8 +8,8 @@ export const Route = createFileRoute("/admin/journey")({
 });
 
 function JourneyPage() {
-  const visitors = FUNNEL[0].value;
-  const booked = FUNNEL[FUNNEL.length - 1].value;
+  const visitors = FUNNEL[0]!.value;
+  const booked = FUNNEL[FUNNEL.length - 1]!.value;
 
   return (
     <div className="grid gap-8">

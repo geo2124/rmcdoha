@@ -40,7 +40,7 @@ function EmergencyPage() {
               </a>
             </Button>
             <Button asChild variant="quiet" size="xl" className="w-full sm:w-auto">
-              <a href={BRANCHES[0].directions} target="_blank" rel="noreferrer">
+              <a href={BRANCHES[0]!.directions} target="_blank" rel="noreferrer">
                 <MapPin className="size-5" /> Get Directions
               </a>
             </Button>
