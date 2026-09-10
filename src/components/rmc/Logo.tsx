@@ -25,10 +25,10 @@ export function Logo({ compact = false }: { compact?: boolean }) {
     <Link to="/" className="flex min-w-0 items-center gap-3">
       <LogoMark />
       <span className={cn("min-w-0 leading-tight", compact && "hidden sm:block")}>
-        <span className="block truncate font-display text-[0.94rem] font-extrabold uppercase tracking-[0.1em] text-primary-deep">
+        <span className="block whitespace-nowrap font-display text-[0.8rem] font-extrabold uppercase tracking-[0.04em] text-primary-deep xl:text-[0.9rem]">
           {t("brand.name")}
         </span>
-        <span className="block truncate text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
+        <span className="block truncate text-[0.62rem] uppercase tracking-[0.18em] text-muted-foreground">
           {t("brand.tagline")}
         </span>
       </span>

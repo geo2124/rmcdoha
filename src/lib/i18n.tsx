@@ -72,6 +72,56 @@ const D: Dict = {
   "common.years": { en: "years", ar: "سنة" },
   "common.demo": { en: "Demo", ar: "عرض توضيحي" },
   "footer.rights": { en: "Demonstration prototype — not a live medical service.", ar: "نموذج توضيحي — ليس خدمة طبية فعلية." },
+
+  "home.cta3sub": {
+    en: "Describe how you feel — we'll suggest the right next step.",
+    ar: "اوصف ما تشعر به — وسنقترح الخطوة التالية المناسبة.",
+  },
+  "home.stat1": { en: "13 specialities", ar: "13 تخصصاً" },
+  "home.stat2": { en: "Same-week appointments", ar: "مواعيد خلال نفس الأسبوع" },
+  "home.stat3": { en: "Lusail & Al Gharrafa", ar: "لوسيل والغرافة" },
+  "home.cardEyebrow": { en: "Next step, clear", ar: "خطوة تالية واضحة" },
+  "home.cardBody": {
+    en: "Patients tell us what they need — the platform guides them to the right service.",
+    ar: "يخبرنا المريض بما يحتاجه — وتوجهه المنصة إلى الخدمة المناسبة.",
+  },
+  "home.storyEyebrow": { en: "From website to platform", ar: "من موقع إلى منصة" },
+  "home.storyH2": {
+    en: "Patients shouldn't have to know which doctor to see.",
+    ar: "لا ينبغي أن يعرف المريض أي طبيب يزور.",
+  },
+  "home.storyBody": {
+    en: "They tell us what they need help with. The platform connects doctors, specialities, services and appointments into one guided journey — and prepares each visit before the patient arrives.",
+    ar: "يخبرنا المريض بما يحتاج المساعدة فيه. تربط المنصة الأطباء والتخصصات والخدمات والمواعيد في رحلة واحدة موجهة — وتجهّز كل زيارة قبل وصول المريض.",
+  },
+  "home.storyCta": { en: "See the management view", ar: "اطّلع على واجهة الإدارة" },
+  "home.step1": { en: "Describe the concern", ar: "اوصف الشكوى" },
+  "home.step1body": { en: "A short guided conversation, in Arabic or English.", ar: "محادثة موجهة قصيرة، بالعربية أو الإنجليزية." },
+  "home.step2": { en: "Get the right service", ar: "احصل على الخدمة المناسبة" },
+  "home.step2body": { en: "Specialty guidance with clear, safe next steps.", ar: "إرشاد للتخصص مع خطوات تالية واضحة وآمنة." },
+  "home.step3": { en: "Book in a few taps", ar: "احجز بلمسات قليلة" },
+  "home.step3body": { en: "Doctor, branch, date and time in one flow.", ar: "الطبيب والفرع والتاريخ والوقت في مسار واحد." },
+  "home.step4": { en: "Arrive prepared", ar: "احضر مستعداً" },
+  "home.step4body": { en: "A pre-visit summary ready for the care team.", ar: "ملخص قبل الزيارة جاهز للفريق الطبي." },
+  "home.specH2": { en: "Specialities", ar: "التخصصات" },
+  "home.specSub": {
+    en: "Care across 13 specialities at our Lusail and Al Gharrafa branches.",
+    ar: "رعاية في 13 تخصصاً في فرعي لوسيل والغرافة.",
+  },
+  "home.specAll": { en: "View all specialities", ar: "عرض جميع التخصصات" },
+  "home.docH2": { en: "Meet our doctors", ar: "تعرف على أطبائنا" },
+  "home.docSub": {
+    en: "Consultants and specialists across both branches, with availability this week.",
+    ar: "استشاريون وأخصائيون في الفرعين، مع مواعيد متاحة هذا الأسبوع.",
+  },
+  "home.urgentH2": { en: "Need urgent medical care?", ar: "تحتاج رعاية طبية عاجلة؟" },
+  "home.urgentBody": {
+    en: "For severe symptoms, don't wait for an appointment. Emergency information and directions are one tap away.",
+    ar: "في الأعراض الشديدة لا تنتظر موعداً. معلومات الطوارئ والاتجاهات على بعد لمسة واحدة.",
+  },
+  "home.urgentCta": { en: "Emergency information", ar: "معلومات الطوارئ" },
+  "home.callLusail": { en: "Call Lusail", ar: "اتصل بفرع لوسيل" },
+  "home.managementDemo": { en: "Management Demo", ar: "عرض الإدارة" },
 };
 
 interface Ctx {
