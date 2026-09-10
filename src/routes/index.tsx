@@ -84,7 +84,7 @@ function Index() {
               <span className="min-w-0">
                 <span className="block truncate font-display text-sm font-bold">✦ {t("home.cta3")}</span>
                 <span className="block truncate text-xs text-muted-foreground">
-                  Describe how you feel — we'll suggest the right next step.
+                  {t("home.cta3sub")}
                 </span>
               </span>
               <ArrowRight className="ms-auto size-4 shrink-0 text-primary" />
@@ -92,13 +92,13 @@ function Index() {
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-2">
-                <UserRound className="size-4 text-primary" /> 13 specialities
+                <UserRound className="size-4 text-primary" /> {t("home.stat1")}
               </span>
               <span className="inline-flex items-center gap-2">
-                <CalendarDays className="size-4 text-primary" /> Same-week appointments
+                <CalendarDays className="size-4 text-primary" /> {t("home.stat2")}
               </span>
               <span className="inline-flex items-center gap-2">
-                <Phone className="size-4 text-primary" /> Lusail & Al Gharrafa
+                <Phone className="size-4 text-primary" /> {t("home.stat3")}
               </span>
             </div>
           </div>
@@ -112,9 +112,9 @@ function Index() {
               className="aspect-[4/3] w-full rounded-3xl border border-border object-cover shadow-[var(--shadow-lift)]"
             />
             <div className="surface absolute -bottom-6 start-6 hidden max-w-[15rem] p-4 sm:block">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Next step, clear</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">{t("home.cardEyebrow")}</p>
               <p className="mt-2 text-sm text-muted-foreground">
-                Patients tell us what they need — the platform guides them to the right service.
+                {t("home.cardBody")}
               </p>
             </div>
           </div>
@@ -149,27 +149,26 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">From website to platform</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{t("home.storyEyebrow")}</p>
               <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
-                Patients shouldn't have to know which doctor to see.
+                {t("home.storyH2")}
               </h2>
               <p className="mt-4 text-muted-foreground">
-                They tell us what they need help with. The platform connects doctors, specialities, services and
-                appointments into one guided journey — and prepares each visit before the patient arrives.
+                {t("home.storyBody")}
               </p>
               <Button asChild variant="soft" size="lg" className="mt-6">
                 <Link to="/admin">
-                  See the management view <ArrowRight className="size-4" />
+                  {t("home.storyCta")} <ArrowRight className="size-4" />
                 </Link>
               </Button>
             </div>
 
             <ol className="grid gap-3 sm:grid-cols-2">
               {[
-                { icon: MessageSquareHeart, title: "Describe the concern", body: "A short guided conversation, in Arabic or English." },
-                { icon: Stethoscope, title: "Get the right service", body: "Specialty guidance with clear, safe next steps." },
-                { icon: CalendarDays, title: "Book in a few taps", body: "Doctor, branch, date and time in one flow." },
-                { icon: HeartPulse, title: "Arrive prepared", body: "A pre-visit summary ready for the care team." },
+                { icon: MessageSquareHeart, title: t("home.step1"), body: t("home.step1body") },
+                { icon: Stethoscope, title: t("home.step2"), body: t("home.step2body") },
+                { icon: CalendarDays, title: t("home.step3"), body: t("home.step3body") },
+                { icon: HeartPulse, title: t("home.step4"), body: t("home.step4body") },
               ].map((step, i) => (
                 <li key={step.title} className="surface p-5">
                   <div className="flex items-center gap-3">
@@ -191,13 +190,13 @@ function Index() {
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
         <div className="grid gap-4 sm:flex sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-3xl font-extrabold sm:text-4xl">Specialities</h2>
+            <h2 className="text-3xl font-extrabold sm:text-4xl">{t("home.specH2")}</h2>
             <p className="mt-3 max-w-xl text-muted-foreground">
-              Care across 13 specialities at our Lusail and Al Gharrafa branches.
+              {t("home.specSub")}
             </p>
           </div>
           <Button asChild variant="quiet">
-            <Link to="/specialities">View all specialities</Link>
+            <Link to="/specialities">{t("home.specAll")}</Link>
           </Button>
         </div>
 
@@ -225,13 +224,13 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
           <div className="grid gap-4 sm:flex sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-3xl font-extrabold sm:text-4xl">Meet our doctors</h2>
+              <h2 className="text-3xl font-extrabold sm:text-4xl">{t("home.docH2")}</h2>
               <p className="mt-3 max-w-xl text-muted-foreground">
-                Consultants and specialists across both branches, with availability this week.
+                {t("home.docSub")}
               </p>
             </div>
             <Button asChild variant="quiet">
-              <Link to="/doctors">Find a doctor</Link>
+              <Link to="/doctors">{t("nav.doctors")}</Link>
             </Button>
           </div>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -246,25 +245,25 @@ function Index() {
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
         <div className="grid items-center gap-6 rounded-3xl border border-urgent/25 bg-urgent-soft p-7 sm:grid-cols-[minmax(0,1fr)_auto]">
           <div className="min-w-0">
-            <h2 className="font-display text-2xl font-extrabold text-urgent">Need urgent medical care?</h2>
+            <h2 className="font-display text-2xl font-extrabold text-urgent">{t("home.urgentH2")}</h2>
             <p className="mt-2 text-sm text-foreground/80">
-              For severe symptoms, don't wait for an appointment. Emergency information and directions are one tap away.
+              {t("home.urgentBody")}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button asChild variant="urgent" size="lg">
-              <Link to="/emergency">Emergency information</Link>
+              <Link to="/emergency">{t("home.urgentCta")}</Link>
             </Button>
             <Button asChild variant="quiet" size="lg">
               <a href="tel:+97444502050">
-                <Phone className="size-4" /> Call Lusail
+                <Phone className="size-4" /> {t("home.callLusail")}
               </a>
             </Button>
           </div>
         </div>
         <p className="mt-6 text-center text-xs text-muted-foreground">
           <Link to="/admin" className="underline decoration-dotted underline-offset-4 hover:text-primary">
-            Management Demo
+            {t("home.managementDemo")}
           </Link>
         </p>
       </section>
