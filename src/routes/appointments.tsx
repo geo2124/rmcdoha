@@ -32,11 +32,15 @@ import { useDemo, type Appointment } from "@/lib/demo-store";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/appointments")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    doctor: typeof search.doctor === "string" ? search.doctor : undefined,
-    specialty: typeof search.specialty === "string" ? search.specialty : undefined,
-    time: typeof search.time === "string" ? search.time : undefined,
-  }),
+  validateSearch: (
+    search: Record<string, unknown>,
+  ): { doctor?: string; specialty?: string; time?: string } => {
+    const out: { doctor?: string; specialty?: string; time?: string } = {};
+    if (typeof search["doctor"] === "string") out.doctor = search["doctor"];
+    if (typeof search["specialty"] === "string") out.specialty = search["specialty"];
+    if (typeof search["time"] === "string") out.time = search["time"];
+    return out;
+  },
   head: () => ({
     meta: [
       { title: "Request an Appointment — Royal Medical Center Doha" },

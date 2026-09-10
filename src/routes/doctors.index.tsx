@@ -11,10 +11,12 @@ import { useLang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/doctors/")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    specialty: typeof search.specialty === "string" ? search.specialty : undefined,
-    q: typeof search.q === "string" ? search.q : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { specialty?: string; q?: string } => {
+    const out: { specialty?: string; q?: string } = {};
+    if (typeof search["specialty"] === "string") out.specialty = search["specialty"];
+    if (typeof search["q"] === "string") out.q = search["q"];
+    return out;
+  },
   head: () => ({
     meta: [
       { title: "Find a Doctor — Royal Medical Center Doha" },
