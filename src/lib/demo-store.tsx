@@ -16,8 +16,13 @@ export interface BookingDraft {
   };
 }
 
-export interface Appointment extends Required<Omit<BookingDraft, "patient">> {
+export interface Appointment {
   id: string;
+  specialtyId: string;
+  doctorId: string;
+  branch: BranchId;
+  date: string;
+  time: string;
   patient: NonNullable<BookingDraft["patient"]>;
   createdAt: string;
 }

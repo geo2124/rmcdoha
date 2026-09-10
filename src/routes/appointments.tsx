@@ -367,11 +367,11 @@ function Summary({
   date,
   time,
 }: {
-  specialtyId?: string;
-  doctorId?: string;
-  branch?: BranchId;
-  date?: string;
-  time?: string;
+  specialtyId?: string | undefined;
+  doctorId?: string | undefined;
+  branch?: BranchId | undefined;
+  date?: string | undefined;
+  time?: string | undefined;
 }) {
   const rows = [
     ["Specialty", specialtyId ? specialtyById(specialtyId)?.name : "—"],
