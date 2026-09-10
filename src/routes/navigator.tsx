@@ -330,12 +330,12 @@ function NavigatorPage() {
                   </ul>
                   <div className="mt-5 flex flex-wrap gap-2">
                     <Button asChild variant="hero" size="lg">
-                      <Link to="/doctors" search={{ specialty: plan.specialtyId }}>
+                      <Link to="/doctors" search={plan.specialtyId ? { specialty: plan.specialtyId } : {}}>
                         Find a {specialty?.name} Doctor <ArrowRight className="size-4" />
                       </Link>
                     </Button>
                     <Button asChild variant="quiet" size="lg">
-                      <Link to="/appointments" search={{ specialty: plan.specialtyId }}>
+                      <Link to="/appointments" search={plan.specialtyId ? { specialty: plan.specialtyId } : {}}>
                         Request Appointment
                       </Link>
                     </Button>
