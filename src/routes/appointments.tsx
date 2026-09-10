@@ -58,6 +58,14 @@ export const Route = createFileRoute("/appointments")({
 
 const STEP_LABELS = ["Specialty", "Doctor", "Branch", "Date", "Time", "Your details", "Confirm"];
 
+interface FormErrors {
+  name?: string;
+  mobile?: string;
+  email?: string;
+  dob?: string;
+  reason?: string;
+}
+
 function AppointmentsPage() {
   const search = Route.useSearch();
   const { confirmBooking } = useDemo();
@@ -72,7 +80,7 @@ function AppointmentsPage() {
   const [date, setDate] = useState<string | undefined>();
   const [time, setTime] = useState<string | undefined>(search.time);
   const [patient, setPatient] = useState({ name: "", mobile: "", email: "", dob: "", reason: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [appointment, setAppointment] = useState<Appointment | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
 
@@ -85,7 +93,7 @@ function AppointmentsPage() {
   };
 
   const validate = () => {
-    const e: Record<string, string> = {};
+    const e: FormErrors = {};
     if (patient.name.trim().length < 3) e.name = "Please enter your full name.";
     if (!/^[+\d][\d\s-]{7,}$/.test(patient.mobile.trim())) e.mobile = "Please enter a valid mobile number.";
     if (!/^\S+@\S+\.\S+$/.test(patient.email.trim())) e.email = "Please enter a valid email address.";
@@ -332,7 +340,7 @@ function AppointmentsPage() {
   );
 }
 
-function Step({ title, hint, children }: { title: string; hint?: string; children: React.ReactNode }) {
+function Step({ title, hint, children }: { title: string; hint?: string | undefined; children: React.ReactNode }) {
   return (
     <div className="rise">
       <h2 className="font-display text-xl font-bold sm:text-2xl">{title}</h2>
@@ -342,7 +350,7 @@ function Step({ title, hint, children }: { title: string; hint?: string; childre
   );
 }
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({ label, error, children }: { label: string; error?: string | undefined; children: React.ReactNode }) {
   return (
     <div className="grid gap-2">
       <Label className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">{label}</Label>

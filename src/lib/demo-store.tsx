@@ -2,11 +2,11 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import type { BranchId } from "@/data/rmc";
 
 export interface BookingDraft {
-  specialtyId?: string;
-  doctorId?: string;
-  branch?: BranchId;
-  date?: string;
-  time?: string;
+  specialtyId?: string | undefined;
+  doctorId?: string | undefined;
+  branch?: BranchId | undefined;
+  date?: string | undefined;
+  time?: string | undefined;
   patient?: {
     name: string;
     mobile: string;
