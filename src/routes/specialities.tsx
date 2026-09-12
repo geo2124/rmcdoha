@@ -17,7 +17,7 @@ export const Route = createFileRoute("/specialities")({
       { property: "og:title", content: "Specialities — Royal Medical Center Doha" },
       {
         property: "og:description",
-        content: "13 specialities across RMC Lusail and Al Gharrafa, with doctors and availability for each.",
+        content: "Explore Royal Medical Center Doha’s published medical departments and doctors.",
       },
     ],
   }),

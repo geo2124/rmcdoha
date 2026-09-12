@@ -1,21 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import logoAsset from "@/assets/rmc-logo.png.asset.json";
 import { useLang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <span
-      className={cn(
-        "brand-gradient grid size-10 shrink-0 place-items-center rounded-xl text-primary-foreground",
-        className,
-      )}
-      aria-hidden="true"
-    >
-      <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.7">
-        <path d="M12 3.2 5 6v5.4c0 4.2 2.9 7.6 7 9.4 4.1-1.8 7-5.2 7-9.4V6l-7-2.8Z" strokeLinejoin="round" />
-        <path d="M12 8.6v6.2M8.9 11.7h6.2" strokeLinecap="round" />
-      </svg>
-    </span>
+    <img src={logoAsset.url} alt="" className={cn("h-10 w-auto shrink-0 object-contain", className)} />
   );
 }
 
@@ -23,15 +13,8 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   const { t } = useLang();
   return (
     <Link to="/" className="flex min-w-0 items-center gap-3">
-      <LogoMark />
-      <span className={cn("min-w-0 leading-tight", compact && "hidden sm:block")}>
-        <span className="block whitespace-nowrap font-display text-[0.8rem] font-extrabold uppercase tracking-[0.04em] text-primary-deep xl:text-[0.9rem]">
-          {t("brand.name")}
-        </span>
-        <span className="block truncate text-[0.62rem] uppercase tracking-[0.18em] text-muted-foreground">
-          {t("brand.tagline")}
-        </span>
-      </span>
+      <LogoMark className="h-11 sm:h-12" />
+      <span className={cn("sr-only", compact && "sr-only")}>{t("brand.name")} — {t("brand.tagline")}</span>
     </Link>
   );
 }
