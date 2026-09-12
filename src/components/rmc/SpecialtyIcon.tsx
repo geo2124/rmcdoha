@@ -1,6 +1,7 @@
 import {
   Activity,
   Baby,
+  Brain,
   Bone,
   ClipboardCheck,
   Droplets,
@@ -22,6 +23,7 @@ import { cn } from "@/lib/utils";
 const MAP: Record<string, LucideIcon> = {
   Activity,
   Baby,
+  Brain,
   Bone,
   ClipboardCheck,
   Droplets,

@@ -6,7 +6,7 @@ import { DoctorCard } from "@/components/rmc/DoctorCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BRANCHES, DOCTORS, SPECIALTIES, specialtyById } from "@/data/rmc";
+import { DOCTORS, SPECIALTIES, specialtyById } from "@/data/rmc";
 import { useLang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/doctors/")({
       {
         name: "description",
         content:
-          "Search Royal Medical Center doctors by specialty, branch, language, availability and insurance across Lusail and Al Gharrafa.",
+          "Explore doctors and departments published by Royal Medical Center Doha and request an appointment.",
       },
       { property: "og:title", content: "Find a Doctor — Royal Medical Center Doha" },
       {
@@ -34,9 +34,6 @@ export const Route = createFileRoute("/doctors/")({
   }),
   component: DoctorsPage,
 });
-
-const LANGUAGES = ["Arabic", "English", "French", "Urdu", "Turkish"];
-const INSURERS = ["QLM", "AXA", "Allianz Care", "MetLife", "Cigna", "Self-pay"];
 
 function Chip({
   active,
@@ -69,11 +66,7 @@ function DoctorsPage() {
 
   const [q, setQ] = useState("");
   const [specialty, setSpecialty] = useState<string | undefined>(initialSpecialty);
-  const [branch, setBranch] = useState<string | undefined>();
   const [gender, setGender] = useState<string | undefined>();
-  const [language, setLanguage] = useState<string | undefined>();
-  const [availability, setAvailability] = useState<string | undefined>();
-  const [insurance, setInsurance] = useState<string | undefined>();
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const results = useMemo(() => {
@@ -81,11 +74,7 @@ function DoctorsPage() {
     return DOCTORS.filter((d) => {
       const sp = specialtyById(d.specialtyId);
       if (specialty && d.specialtyId !== specialty) return false;
-      if (branch && d.branch !== branch) return false;
       if (gender && d.gender !== gender) return false;
-      if (language && !d.languages.includes(language)) return false;
-      if (availability && d.availability !== availability) return false;
-      if (insurance && !d.insurance.includes(insurance)) return false;
       if (!term) return true;
       return (
         d.name.toLowerCase().includes(term) ||
@@ -94,17 +83,13 @@ function DoctorsPage() {
         d.expertise.some((e) => e.toLowerCase().includes(term))
       );
     });
-  }, [q, specialty, branch, gender, language, availability, insurance]);
+  }, [q, specialty, gender]);
 
-  const activeCount = [specialty, branch, gender, language, availability, insurance].filter(Boolean).length;
+  const activeCount = [specialty, gender].filter(Boolean).length;
 
   const clearAll = () => {
     setSpecialty(undefined);
-    setBranch(undefined);
     setGender(undefined);
-    setLanguage(undefined);
-    setAvailability(undefined);
-    setInsurance(undefined);
   };
 
   const filterPanel = (
@@ -116,38 +101,10 @@ function DoctorsPage() {
           </Chip>
         ))}
       </FilterGroup>
-      <FilterGroup label="Branch">
-        {BRANCHES.map((b) => (
-          <Chip key={b.id} active={branch === b.id} onClick={() => setBranch(branch === b.id ? undefined : b.id)}>
-            {b.name}
-          </Chip>
-        ))}
-      </FilterGroup>
       <FilterGroup label="Gender">
         {["female", "male"].map((g) => (
           <Chip key={g} active={gender === g} onClick={() => setGender(gender === g ? undefined : g)}>
             {g === "female" ? "Female doctor" : "Male doctor"}
-          </Chip>
-        ))}
-      </FilterGroup>
-      <FilterGroup label="Language">
-        {LANGUAGES.map((l) => (
-          <Chip key={l} active={language === l} onClick={() => setLanguage(language === l ? undefined : l)}>
-            {l}
-          </Chip>
-        ))}
-      </FilterGroup>
-      <FilterGroup label="Availability">
-        {["Today", "This week", "Next week"].map((a) => (
-          <Chip key={a} active={availability === a} onClick={() => setAvailability(availability === a ? undefined : a)}>
-            {a}
-          </Chip>
-        ))}
-      </FilterGroup>
-      <FilterGroup label="Insurance">
-        {INSURERS.map((i) => (
-          <Chip key={i} active={insurance === i} onClick={() => setInsurance(insurance === i ? undefined : i)}>
-            {i}
           </Chip>
         ))}
       </FilterGroup>

@@ -11,7 +11,7 @@ export const Route = createFileRoute("/emergency")({
       {
         name: "description",
         content:
-          "Urgent care information for Royal Medical Center Doha: call the Lusail or Al Gharrafa branch, get directions and know what to do in an emergency.",
+          "Urgent care information for Royal Medical Center Doha: call Al Hilal or Al Gharrafa and know what to do in an emergency.",
       },
       { property: "og:title", content: "Emergency Information — Royal Medical Center Doha" },
       { property: "og:description", content: "Call, get directions, and know what to do in an emergency." },
@@ -36,7 +36,7 @@ function EmergencyPage() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild variant="urgent" size="xl" className="w-full sm:w-auto">
               <a href="tel:+97444502050">
-                <Phone className="size-5" /> Call Now · +974 44502050
+                 <Phone className="size-5" /> Call Al Hilal · +974 4450 2050
               </a>
             </Button>
             <Button asChild variant="quiet" size="xl" className="w-full sm:w-auto">
@@ -49,7 +49,7 @@ function EmergencyPage() {
       </section>
 
       <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6">
-        <h2 className="text-2xl font-extrabold">Emergency Department</h2>
+        <h2 className="text-2xl font-extrabold">Branch contacts</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {BRANCHES.map((b) => (
             <div key={b.id} className="surface p-6">
