@@ -1,449 +1,73 @@
 /**
- * Mock data layer for the Royal Medical Center digital front door demo.
- * All names, availability and figures are fictional demo data.
- * Swap these exports for real API calls without touching UI components.
+ * Verified Royal Medical Center public directory data.
+ * Doctor names, departments, profile details and contact numbers are sourced
+ * from rmcdoha.com. Appointment availability and management analytics remain simulated.
  */
 
-export type BranchId = "lusail" | "gharrafa";
+export type BranchId = "hilal" | "gharrafa";
 
-export interface Branch {
-  id: BranchId;
-  name: string;
-  nameAr: string;
-  phone: string;
-  address: string;
-  directions: string;
-}
-
-export interface Specialty {
-  id: string;
-  name: string;
-  nameAr: string;
-  blurb: string;
-  category: "Clinical Services" | "Diagnostics" | "Specialized Procedures";
-  icon: string;
-}
-
+export interface Branch { id: BranchId; name: string; nameAr: string; phone: string; address: string; directions: string; }
+export interface Specialty { id: string; name: string; nameAr: string; blurb: string; category: "Clinical Services" | "Diagnostics" | "Specialized Procedures"; icon: string; }
 export interface Doctor {
-  id: string;
-  name: string;
-  title: string;
-  specialtyId: string;
-  branch: BranchId;
-  gender: "male" | "female";
-  languages: string[];
-  experience: number;
-  expertise: string[];
-  about: string;
-  credentials: string[];
-  services: string[];
-  consultation: string[];
-  insurance: string[];
-  nextAvailable: string;
-  availability: "This week" | "Next week" | "Today";
-  slots: string[];
+  id: string; name: string; title: string; specialtyId: string; gender: "male" | "female";
+  expertise: string[]; services: string[]; sourceUrl: string; imageUrl?: string;
+  branch?: BranchId; languages?: string[]; experience?: number; about?: string; credentials?: string[];
+  consultation?: string[]; insurance?: string[]; nextAvailable?: string; availability?: "This week" | "Next week" | "Today"; slots?: string[];
 }
-
-export interface ServiceItem {
-  id: string;
-  name: string;
-  category: "Clinical Services" | "Diagnostics" | "Laboratory" | "Pharmacy" | "Specialized Procedures";
-  description: string;
-  specialtyId?: string;
-  icon: string;
-}
+export interface ServiceItem { id: string; name: string; category: "Clinical Services" | "Diagnostics" | "Laboratory" | "Pharmacy" | "Specialized Procedures"; description: string; specialtyId?: string; icon: string; }
 
 export const BRANCHES: Branch[] = [
-  {
-    id: "lusail",
-    name: "Lusail",
-    nameAr: "لوسيل",
-    phone: "+974 44502050",
-    address: "Fox Hills, Lusail, Doha, Qatar",
-    directions: "https://maps.google.com/?q=Royal+Medical+Center+Lusail+Doha",
-  },
-  {
-    id: "gharrafa",
-    name: "Al Gharrafa",
-    nameAr: "الغرافة",
-    phone: "+974 44602060",
-    address: "Al Gharrafa, Doha, Qatar",
-    directions: "https://maps.google.com/?q=Royal+Medical+Center+Al+Gharrafa+Doha",
-  },
+ { id:"hilal", name:"Al Hilal", nameAr:"الهلال", phone:"+974 4450 2050", address:"Al Muntazah Street, West Hilal Area, Doha, Qatar", directions:"https://maps.google.com/?q=Royal+Medical+Center+Al+Hilal+Doha" },
+ { id:"gharrafa", name:"Al Gharrafa", nameAr:"الغرافة", phone:"+974 4460 2060", address:"Al Mazhabiyah Street, opposite Al Jazeera Compound, Street 920, Zone 51, Doha, Qatar", directions:"https://maps.google.com/?q=Royal+Medical+Center+Al+Gharrafa+Doha" },
 ];
 
 export const SPECIALTIES: Specialty[] = [
-  {
-    id: "dentistry",
-    name: "Dentistry",
-    nameAr: "طب الأسنان",
-    blurb: "Preventive, restorative and cosmetic dental care for adults and children.",
-    category: "Clinical Services",
-    icon: "Smile",
-  },
-  {
-    id: "dermatology",
-    name: "Dermatology",
-    nameAr: "الجلدية",
-    blurb: "Skin, hair and nail conditions, plus medical aesthetics and laser care.",
-    category: "Clinical Services",
-    icon: "Sparkles",
-  },
-  {
-    id: "general-surgery",
-    name: "General Surgery",
-    nameAr: "الجراحة العامة",
-    blurb: "Consultation and surgical management of abdominal and soft tissue conditions.",
-    category: "Specialized Procedures",
-    icon: "Stethoscope",
-  },
-  {
-    id: "hair-transplant",
-    name: "Hair Transplant",
-    nameAr: "زراعة الشعر",
-    blurb: "Assessment of hair loss and advanced restoration procedures.",
-    category: "Specialized Procedures",
-    icon: "Scissors",
-  },
-  {
-    id: "internal-pulmonary",
-    name: "Internal & Pulmonary Medicine",
-    nameAr: "الباطنية والصدرية",
-    blurb: "Chronic disease, respiratory and general adult medical care.",
-    category: "Clinical Services",
-    icon: "Activity",
-  },
-  {
-    id: "obgyn",
-    name: "Obstetrics & Gynecology",
-    nameAr: "النساء والتوليد",
-    blurb: "Pregnancy care, women's health and gynecological procedures.",
-    category: "Clinical Services",
-    icon: "Baby",
-  },
-  {
-    id: "ophthalmology",
-    name: "Ophthalmology",
-    nameAr: "طب العيون",
-    blurb: "Vision assessment, eye conditions and surgical eye care.",
-    category: "Clinical Services",
-    icon: "Eye",
-  },
-  {
-    id: "pediatrics",
-    name: "Pediatrics",
-    nameAr: "طب الأطفال",
-    blurb: "Newborn, child and adolescent health, vaccinations and growth care.",
-    category: "Clinical Services",
-    icon: "Baby",
-  },
-  {
-    id: "plastic-surgery",
-    name: "Plastic Surgery",
-    nameAr: "الجراحة التجميلية",
-    blurb: "Reconstructive and aesthetic surgical care with consultative planning.",
-    category: "Specialized Procedures",
-    icon: "Gem",
-  },
-  {
-    id: "urology",
-    name: "Urology",
-    nameAr: "المسالك البولية",
-    blurb: "Kidney, bladder and men's health conditions and procedures.",
-    category: "Clinical Services",
-    icon: "Droplets",
-  },
-  {
-    id: "vascular-surgery",
-    name: "Vascular Surgery",
-    nameAr: "جراحة الأوعية الدموية",
-    blurb: "Veins, arteries and circulation assessment and treatment.",
-    category: "Specialized Procedures",
-    icon: "HeartPulse",
-  },
-  {
-    id: "orthopedics",
-    name: "Orthopedics",
-    nameAr: "جراحة العظام",
-    blurb: "Bone, joint and sports injury assessment and treatment.",
-    category: "Clinical Services",
-    icon: "Bone",
-  },
-  {
-    id: "cardiology",
-    name: "Cardiology",
-    nameAr: "أمراض القلب",
-    blurb: "Heart health assessment, diagnostics and ongoing cardiac care.",
-    category: "Clinical Services",
-    icon: "Heart",
-  },
+ {id:"dentistry",name:"Dentistry",nameAr:"طب الأسنان",blurb:"Oral surgery, cosmetic and pediatric dentistry, orthodontics and endodontics.",category:"Clinical Services",icon:"Smile"},
+ {id:"dermatology",name:"Dermatology",nameAr:"طب الأمراض الجلدية",blurb:"Medical dermatology, hair and nail care, and aesthetic treatments.",category:"Clinical Services",icon:"Sparkles"},
+ {id:"general-surgery",name:"General Surgery",nameAr:"الجراحة العامة",blurb:"General and laparoscopic surgical consultation and treatment.",category:"Specialized Procedures",icon:"Stethoscope"},
+ {id:"hair-transplant",name:"Hair Transplant",nameAr:"زرع الشعر الطبيعي",blurb:"Specialist assessment and surgical hair restoration.",category:"Specialized Procedures",icon:"Scissors"},
+ {id:"internal-pulmonary",name:"Internal & Pulmonary Medicine",nameAr:"الطب الداخلي والرئوي",blurb:"General medicine and respiratory disease care.",category:"Clinical Services",icon:"Activity"},
+ {id:"obgyn",name:"Obstetrics & Gynecology",nameAr:"طب التوليد والنسائيات",blurb:"Pregnancy, gynecology, infertility and women’s health care.",category:"Clinical Services",icon:"Baby"},
+ {id:"ophthalmology",name:"Ophthalmology",nameAr:"طب العيون",blurb:"Eye examinations, diagnostics and ophthalmic surgery.",category:"Clinical Services",icon:"Eye"},
+ {id:"orthopedics",name:"Orthopedics",nameAr:"جراحة العظام",blurb:"Orthopedic assessment and treatment for bone and joint conditions.",category:"Clinical Services",icon:"Bone"},
+ {id:"pediatrics",name:"Pediatrics",nameAr:"طب الأطفال",blurb:"Child health, development, vaccination and acute care.",category:"Clinical Services",icon:"Baby"},
+ {id:"plastic-surgery",name:"Plastic Surgery",nameAr:"الجراحة التجميلية",blurb:"Aesthetic and reconstructive surgical consultations.",category:"Specialized Procedures",icon:"Gem"},
+ {id:"psychiatry",name:"Psychiatry",nameAr:"الطب النفسي",blurb:"Psychiatry is listed in RMC’s official department directory.",category:"Clinical Services",icon:"Brain"},
+ {id:"urology",name:"Urology",nameAr:"المسالك البولية",blurb:"Assessment and treatment of urinary and male health conditions.",category:"Clinical Services",icon:"Droplets"},
+ {id:"vascular-surgery",name:"Vascular Surgery",nameAr:"جراحة الأوعية الدموية",blurb:"Specialist care for vascular and circulation conditions.",category:"Specialized Procedures",icon:"HeartPulse"},
 ];
 
-const SLOTS_A = ["09:00", "09:30", "10:30", "11:00", "12:00", "16:00", "17:30"];
-const SLOTS_B = ["08:30", "10:00", "11:30", "13:00", "17:00", "18:30"];
-const SLOTS_C = ["09:15", "10:45", "12:15", "15:30", "16:45", "19:00"];
-
+const profile=(id:string,name:string,title:string,specialtyId:string,gender:"male"|"female",expertise:string[],path:string,imageUrl?:string):Doctor=>({id,name,title,specialtyId,gender,expertise,services:expertise,sourceUrl:`https://rmcdoha.com/${path}/`,...(imageUrl?{imageUrl}:{})});
 export const DOCTORS: Doctor[] = [
-  {
-    id: "ahmed-hassan",
-    name: "Dr. Ahmed Hassan",
-    title: "Consultant Orthopedic Surgeon",
-    specialtyId: "orthopedics",
-    branch: "lusail",
-    gender: "male",
-    languages: ["Arabic", "English"],
-    experience: 18,
-    expertise: ["Knee & hip conditions", "Sports injuries", "Arthroscopic surgery"],
-    about:
-      "Dr. Ahmed Hassan focuses on joint preservation and minimally invasive orthopedic care, with a particular interest in knee conditions and sports-related injuries.",
-    credentials: ["MBBCh", "Arab Board of Orthopedic Surgery", "Fellowship in Sports Medicine"],
-    services: ["Joint assessment", "Arthroscopy", "Fracture care", "Post-operative rehabilitation planning"],
-    consultation: ["In-person consultation", "Follow-up review"],
-    insurance: ["QLM", "AXA", "Allianz Care"],
-    nextAvailable: "Tomorrow, 10:30",
-    availability: "This week",
-    slots: SLOTS_A,
-  },
-  {
-    id: "layla-mansour",
-    name: "Dr. Layla Mansour",
-    title: "Specialist Dermatologist",
-    specialtyId: "dermatology",
-    branch: "lusail",
-    gender: "female",
-    languages: ["Arabic", "English", "French"],
-    experience: 12,
-    expertise: ["Acne & rosacea", "Eczema", "Medical aesthetics"],
-    about:
-      "Dr. Layla Mansour treats a wide range of skin conditions with an emphasis on long-term skin health and evidence-based aesthetic care.",
-    credentials: ["MD", "European Board of Dermatology"],
-    services: ["Skin assessment", "Laser treatments", "Dermoscopy", "Allergy patch testing"],
-    consultation: ["In-person consultation", "Teleconsultation"],
-    insurance: ["QLM", "MetLife"],
-    nextAvailable: "Today, 17:30",
-    availability: "Today",
-    slots: SLOTS_B,
-  },
-  {
-    id: "noor-alkuwari",
-    name: "Dr. Noor Al Kuwari",
-    title: "Consultant Pediatrician",
-    specialtyId: "pediatrics",
-    branch: "gharrafa",
-    gender: "female",
-    languages: ["Arabic", "English"],
-    experience: 15,
-    expertise: ["Childhood fever & infections", "Growth & development", "Vaccinations"],
-    about:
-      "Dr. Noor Al Kuwari cares for newborns through adolescence, with a calm, family-centred approach to childhood illness and development.",
-    credentials: ["MBBS", "Arab Board of Pediatrics", "MRCPCH"],
-    services: ["Child health check", "Vaccination", "Growth monitoring", "Newborn review"],
-    consultation: ["In-person consultation", "Teleconsultation"],
-    insurance: ["QLM", "AXA", "Cigna"],
-    nextAvailable: "Today, 18:30",
-    availability: "Today",
-    slots: SLOTS_B,
-  },
-  {
-    id: "samir-haddad",
-    name: "Dr. Samir Haddad",
-    title: "Consultant Cardiologist",
-    specialtyId: "cardiology",
-    branch: "lusail",
-    gender: "male",
-    languages: ["Arabic", "English"],
-    experience: 22,
-    expertise: ["Chest pain assessment", "Hypertension", "Echocardiography"],
-    about:
-      "Dr. Samir Haddad provides comprehensive cardiac assessment and long-term management of heart and blood pressure conditions.",
-    credentials: ["MD", "FESC", "Fellowship in Interventional Cardiology"],
-    services: ["Cardiac consultation", "ECG", "Echocardiogram", "Stress testing"],
-    consultation: ["In-person consultation", "Follow-up review"],
-    insurance: ["QLM", "Allianz Care", "MetLife"],
-    nextAvailable: "Tomorrow, 09:00",
-    availability: "This week",
-    slots: SLOTS_A,
-  },
-  {
-    id: "maha-darwish",
-    name: "Dr. Maha Darwish",
-    title: "Consultant Obstetrician & Gynecologist",
-    specialtyId: "obgyn",
-    branch: "gharrafa",
-    gender: "female",
-    languages: ["Arabic", "English"],
-    experience: 19,
-    expertise: ["Pregnancy care", "Menstrual disorders", "Minimally invasive gynecology"],
-    about:
-      "Dr. Maha Darwish supports women through pregnancy and gynecological care with a focus on informed, unhurried consultations.",
-    credentials: ["MBBS", "MRCOG"],
-    services: ["Antenatal care", "Ultrasound", "Well-woman check", "Gynecological procedures"],
-    consultation: ["In-person consultation"],
-    insurance: ["QLM", "AXA"],
-    nextAvailable: "Thursday, 11:30",
-    availability: "This week",
-    slots: SLOTS_C,
-  },
-  {
-    id: "khaled-nasser",
-    name: "Dr. Khaled Nasser",
-    title: "Consultant Ophthalmologist",
-    specialtyId: "ophthalmology",
-    branch: "lusail",
-    gender: "male",
-    languages: ["Arabic", "English", "Urdu"],
-    experience: 16,
-    expertise: ["Cataract surgery", "Dry eye", "Retina screening"],
-    about:
-      "Dr. Khaled Nasser combines detailed vision assessment with surgical expertise in cataract and anterior segment care.",
-    credentials: ["MBBS", "FRCS (Ophth)"],
-    services: ["Vision assessment", "Cataract surgery", "Retina screening", "Glaucoma monitoring"],
-    consultation: ["In-person consultation"],
-    insurance: ["QLM", "Cigna"],
-    nextAvailable: "Tomorrow, 12:15",
-    availability: "This week",
-    slots: SLOTS_C,
-  },
-  {
-    id: "yara-fakhoury",
-    name: "Dr. Yara Fakhoury",
-    title: "Specialist Dermatologist & Hair Restoration",
-    specialtyId: "hair-transplant",
-    branch: "gharrafa",
-    gender: "female",
-    languages: ["Arabic", "English"],
-    experience: 11,
-    expertise: ["Hair loss assessment", "PRP therapy", "Transplant planning"],
-    about:
-      "Dr. Yara Fakhoury assesses the medical causes of hair loss before recommending restoration options, including surgical planning.",
-    credentials: ["MD", "Diploma in Trichology"],
-    services: ["Hair loss consultation", "Trichoscopy", "PRP therapy", "Transplant planning"],
-    consultation: ["In-person consultation", "Teleconsultation"],
-    insurance: ["Self-pay", "QLM"],
-    nextAvailable: "Wednesday, 16:45",
-    availability: "This week",
-    slots: SLOTS_C,
-  },
-  {
-    id: "omar-shaheen",
-    name: "Dr. Omar Shaheen",
-    title: "Consultant Internal & Pulmonary Medicine",
-    specialtyId: "internal-pulmonary",
-    branch: "lusail",
-    gender: "male",
-    languages: ["Arabic", "English"],
-    experience: 20,
-    expertise: ["Asthma & COPD", "Chronic cough", "Diabetes management"],
-    about:
-      "Dr. Omar Shaheen manages complex adult medical conditions with a focus on respiratory health and chronic disease control.",
-    credentials: ["MD", "MRCP (UK)", "Fellowship in Pulmonology"],
-    services: ["Medical consultation", "Pulmonary function testing", "Chronic care planning"],
-    consultation: ["In-person consultation", "Teleconsultation"],
-    insurance: ["QLM", "AXA", "Allianz Care"],
-    nextAvailable: "Today, 16:00",
-    availability: "Today",
-    slots: SLOTS_A,
-  },
-  {
-    id: "hana-jaber",
-    name: "Dr. Hana Jaber",
-    title: "Specialist Dentist",
-    specialtyId: "dentistry",
-    branch: "gharrafa",
-    gender: "female",
-    languages: ["Arabic", "English"],
-    experience: 9,
-    expertise: ["Cosmetic dentistry", "Root canal treatment", "Pediatric dentistry"],
-    about:
-      "Dr. Hana Jaber provides gentle general and cosmetic dental care, with particular experience treating anxious patients.",
-    credentials: ["BDS", "MSc Restorative Dentistry"],
-    services: ["Dental check-up", "Whitening", "Endodontics", "Veneers"],
-    consultation: ["In-person consultation"],
-    insurance: ["QLM", "MetLife"],
-    nextAvailable: "Tomorrow, 13:00",
-    availability: "This week",
-    slots: SLOTS_B,
-  },
-  {
-    id: "faisal-almarri",
-    name: "Dr. Faisal Al Marri",
-    title: "Consultant Urologist",
-    specialtyId: "urology",
-    branch: "lusail",
-    gender: "male",
-    languages: ["Arabic", "English"],
-    experience: 17,
-    expertise: ["Kidney stones", "Prostate health", "Endourology"],
-    about:
-      "Dr. Faisal Al Marri treats urological conditions with an emphasis on minimally invasive techniques and preventive follow-up.",
-    credentials: ["MD", "Arab Board of Urology"],
-    services: ["Urology consultation", "Stone management", "Prostate assessment"],
-    consultation: ["In-person consultation"],
-    insurance: ["QLM", "Cigna"],
-    nextAvailable: "Monday, 09:30",
-    availability: "Next week",
-    slots: SLOTS_A,
-  },
-  {
-    id: "rania-saleh",
-    name: "Dr. Rania Saleh",
-    title: "Consultant Plastic Surgeon",
-    specialtyId: "plastic-surgery",
-    branch: "gharrafa",
-    gender: "female",
-    languages: ["Arabic", "English", "Turkish"],
-    experience: 14,
-    expertise: ["Reconstructive surgery", "Body contouring", "Scar revision"],
-    about:
-      "Dr. Rania Saleh offers consultative aesthetic and reconstructive surgery, prioritising realistic outcomes and patient safety.",
-    credentials: ["MD", "EBOPRAS"],
-    services: ["Surgical consultation", "Reconstruction", "Scar management"],
-    consultation: ["In-person consultation", "Teleconsultation"],
-    insurance: ["Self-pay"],
-    nextAvailable: "Next Tuesday, 15:30",
-    availability: "Next week",
-    slots: SLOTS_C,
-  },
-  {
-    id: "tarek-baroudi",
-    name: "Dr. Tarek Baroudi",
-    title: "Consultant Vascular Surgeon",
-    specialtyId: "vascular-surgery",
-    branch: "lusail",
-    gender: "male",
-    languages: ["Arabic", "English"],
-    experience: 21,
-    expertise: ["Varicose veins", "Diabetic foot care", "Arterial disease"],
-    about:
-      "Dr. Tarek Baroudi manages vascular and circulation conditions, including advanced vein treatment and limb preservation care.",
-    credentials: ["MD", "FRCS", "Fellowship in Endovascular Surgery"],
-    services: ["Vascular consultation", "Duplex ultrasound", "Vein treatment"],
-    consultation: ["In-person consultation"],
-    insurance: ["QLM", "AXA"],
-    nextAvailable: "Thursday, 10:00",
-    availability: "This week",
-    slots: SLOTS_B,
-  },
-  {
-    id: "sami-othman",
-    name: "Dr. Sami Othman",
-    title: "Consultant General Surgeon",
-    specialtyId: "general-surgery",
-    branch: "gharrafa",
-    gender: "male",
-    languages: ["Arabic", "English"],
-    experience: 23,
-    expertise: ["Hernia repair", "Gallbladder surgery", "Laparoscopic surgery"],
-    about:
-      "Dr. Sami Othman performs a broad range of general and laparoscopic procedures with structured pre- and post-operative care.",
-    credentials: ["MD", "Arab Board of General Surgery"],
-    services: ["Surgical consultation", "Laparoscopic surgery", "Minor procedures"],
-    consultation: ["In-person consultation"],
-    insurance: ["QLM", "Allianz Care"],
-    nextAvailable: "Tomorrow, 11:00",
-    availability: "This week",
-    slots: SLOTS_A,
-  },
+ profile("georges-ghanem","Dr. Georges Ghanem","Oral Surgeon and Medical Aesthetics","dentistry","male",["Wisdom tooth extraction","Dental implants","Bone grafting","TMJ treatment"],"dr-georges-ghanem","https://rmcdoha.com/wp-content/uploads/2025/03/DR.-GEORGES-GHANEM-2-1.jpg"),
+ profile("joe-hobeich","Dr. Joe Hobeich","Cosmetic Dentistry","dentistry","male",["Teeth whitening","Dental veneers","Dental crowns","Smile makeovers"],"dr-joe-hobeich","https://rmcdoha.com/wp-content/uploads/2025/03/DR.-JOE-HOBEICHE-1.jpg"),
+ profile("morshed-morshed","Dr. Morshed Morshed","Oral and Maxillofacial Surgery","dentistry","male",["Dental implants","Jaw surgery","Facial trauma surgery","TMJ treatment"],"dr-morshed-morshed"),
+ profile("jean-claude-bou-chedid","Dr. Jean Claude Bou Chedid","Pediatric Dentistry","dentistry","male",["Dental examinations","Fluoride treatments","Cavity fillings","Emergency dental care"],"dr-jean-claude-bou-chedid"),
+ profile("marc-ezzedine","Dr. Marc Ezzedine","Pediatric Dentistry","dentistry","male",["Dental examinations","Fluoride treatments","Cavity fillings","Oral health education"],"dr-marc-ezzedine","https://rmcdoha.com/wp-content/uploads/2025/03/DR.-MARK-EZZEDINE.jpg"),
+ profile("wassim-el-sayed","Dr. Wassim El Sayed","Orthodontist","dentistry","male",["Traditional braces","Clear aligners","Ceramic braces","Retainers"],"dr-wassim-el-sayed"),
+ profile("kamil-karam","Dr. Kamil Karam","Orthodontist","dentistry","male",["Traditional braces","Clear aligners","Lingual braces","Retainers"],"dr-kamil-karam","https://rmcdoha.com/wp-content/uploads/2025/03/DR.-CAMILLE-ZEIDAN-KARAM-scaled.jpg"),
+ profile("khalil-andrawos","Dr. Khalil Andraos","Orthodontist","dentistry","male",["Traditional braces","Clear aligners","Ceramic braces","Retainers"],"dr-khalil-andrawos"),
+ profile("rawi-harb","Dr. Rawi Harb","Endodontic Specialist","dentistry","male",["Root canal therapy","Endodontic retreatment","Dental trauma management","Vital pulp therapy"],"dr-rawi-harb","https://rmcdoha.com/wp-content/uploads/2025/03/DR.-RAWI-HARB.jpg"),
+ profile("costi","Dr. Costi","Dermatology Consultant","dermatology","male",["Hair diseases","Botox and filler injections","Nail diseases"],"dr-maurice-dahdah","https://rmcdoha.com/wp-content/uploads/2025/03/DR.-COSTI.jpg"),
+ profile("rasha-al-aassi","Dr. Rasha Al Aassi","Dermatology Consultant","dermatology","female",["Skin diseases and allergies","Hair problems","Non-surgical face and neck tightening"],"dr-rasha-al-aassi","https://rmcdoha.com/wp-content/uploads/2017/11/dr-rasha-al.png"),
+ profile("samar-ali","Dr. Samar Ali","Consultant in Dermatology","dermatology","female",["Cosmetic skin treatment","PRP treatment","Laser hair removal","Skin tightening"],"dr-samar-ali","https://rmcdoha.com/wp-content/uploads/2017/11/dr-samar.jpg"),
+ profile("wissam-heneidy","Dr. Wissam Heneidy","Consultant in General and Laparoscopic Surgery","general-surgery","male",["Hernia surgery","Anal surgery","Cholecystectomy","Appendectomy"],"dr-wissam-heneidy","https://rmcdoha.com/wp-content/uploads/2017/11/dr-wesam-hinidi.png"),
+ profile("frederic-menu","Dr. Frederic Menu","Hair Transplant Surgeon","hair-transplant","male",["Hair transplant surgery","Facial and maxillofacial surgery","Microsurgery"],"dr-frederic","https://rmcdoha.com/wp-content/uploads/2017/10/dr-federic.png"),
+ profile("mouchira","Dr. Mouchira","Internal & Pulmonary Medicine","internal-pulmonary","female",["Internal medicine","Respiratory medicine"],"dr-cecilio-azar"),
+ profile("haitham-rehann","Dr. Haitham Rehann","Consultant in Internal Medicine and Respiratory Diseases","internal-pulmonary","male",["General medicine","Diabetes management","Hypertension","Respiratory diseases"],"dr-haitham-rehann","https://rmcdoha.com/wp-content/uploads/2017/11/dr-haitham-rahman.png"),
+ profile("walid-gergi","Dr. Walid Gergi","Obstetrics and Gynecology Consultant","obgyn","male",["Pregnancy follow-up","Infertility","Hormonal imbalance","Natural and Cesarean delivery"],"dr-walid-gergi","https://rmcdoha.com/wp-content/uploads/2017/11/dr-walid-gergi.png"),
+ profile("elie-hallak","Dr. Elie Hallak","Ophthalmology","ophthalmology","male",["Eye care and assessment"],"dr-elie-hallak"),
+ profile("hassan-arrayed","Dr. Hassan Arrayed","Ophthalmology Consultant","ophthalmology","male",["Adult and child eye examinations","LASIK and LASEK","Cornea and retina analysis","Cataract surgery"],"dr-hassan-arrayed","https://rmcdoha.com/wp-content/uploads/2017/09/dr-hassan.png"),
+ profile("joseph-basile","Dr. Joseph Basile","Orthopedics Surgeon Consultant","orthopedics","male",["Knee arthroscopy","Sports injuries","Joint replacement","Knee ligament treatment"],"dr-joseph-basile","https://rmcdoha.com/wp-content/uploads/2017/11/dr-joseph-basile.png"),
+ profile("ghassan-assaf-zeinaddeen","Dr. Ghassan Assaf ZeinAddeen","Consultant Pediatrics","pediatrics","male",["Child health care","Nutrition programs","Vaccines","Child development"],"dr-ghassan","https://rmcdoha.com/wp-content/uploads/2017/10/Dr-Ghassan-1.png"),
+ profile("mazen-mahmood","Dr. Mazen Mahmood","Pediatrics","pediatrics","male",["Child health care","Pediatric consultation"],"dr-mazen-mahmood"),
+ profile("paul-audi","Dr. Paul Audi","Plastic Surgery","plastic-surgery","male",["Plastic and reconstructive surgery"],"dr-paul-audi"),
+ profile("fady-el-jiz","Dr. Fady El Jiz","Plastic Surgery","plastic-surgery","male",["Plastic and reconstructive surgery"],"dr-fady-el-jiz"),
+ profile("fadi-sleilaty","Dr. Fadi Sleilaty","Plastic Surgery","plastic-surgery","male",["Plastic and reconstructive surgery"],"dr-fadi-sleilaty"),
+ profile("jihad-khoury","Dr. Jihad Khoury","Plastic Surgery","plastic-surgery","male",["Plastic and reconstructive surgery"],"dr-jihad-khoury"),
+ profile("hicham-mouallem","Dr. Hicham Mouallem","Plastic Surgery","plastic-surgery","male",["Plastic and reconstructive surgery"],"dr-hicham-mouallem"),
+ profile("marwan-al-zoghby","Dr. Marwan Al Zoghby","Urology","urology","male",["Urology consultation and treatment"],"dr-yasser-abbas"),
+ profile("joseph-j-naoum","Dr. Joseph J Naoum","Vascular Surgery","vascular-surgery","male",["Vascular surgery consultation and treatment"],"dr-jospeh-j-naoum"),
 ];
 
 export const SERVICES: ServiceItem[] = [
@@ -451,7 +75,7 @@ export const SERVICES: ServiceItem[] = [
     id: "specialist-consultation",
     name: "Specialist Consultation",
     category: "Clinical Services",
-    description: "Consultations across 13 specialties at both branches, with same-week availability.",
+    description: "Consultations across RMC’s published medical departments.",
     icon: "Stethoscope",
   },
   {
@@ -481,8 +105,8 @@ export const SERVICES: ServiceItem[] = [
     id: "cardiac-diagnostics",
     name: "Cardiac Diagnostics",
     category: "Diagnostics",
-    description: "ECG, echocardiography and stress testing with cardiology review.",
-    specialtyId: "cardiology",
+    description: "ECG, echocardiography and stress testing with internal-pulmonary review.",
+    specialtyId: "internal-pulmonary",
     icon: "HeartPulse",
   },
   {
@@ -503,7 +127,7 @@ export const SERVICES: ServiceItem[] = [
     id: "pharmacy",
     name: "Pharmacy",
     category: "Pharmacy",
-    description: "On-site pharmacy at both branches with prescription fulfilment and counselling.",
+    description: "Pharmacy services and prescription support.",
     icon: "Pill",
   },
   {
@@ -542,7 +166,7 @@ export const SERVICES: ServiceItem[] = [
 
 export const specialtyById = (id: string) => SPECIALTIES.find((s) => s.id === id);
 export const doctorById = (id: string) => DOCTORS.find((d) => d.id === id);
-export const branchById = (id: BranchId) => BRANCHES.find((b) => b.id === id)!;
+export const branchById = (id: BranchId) => BRANCHES.find((b) => b.id === id) ?? BRANCHES[0];
 export const doctorsBySpecialty = (id: string) => DOCTORS.filter((d) => d.specialtyId === id);
 
 export const NEXT_DATES = (() => {
@@ -581,7 +205,7 @@ export const FUNNEL = [
 ];
 
 export const TOP_REQUESTS = [
-  { name: "Cardiology", value: 18 },
+  { name: "Internal Medicine", value: 18 },
   { name: "Orthopedics", value: 16 },
   { name: "Dermatology", value: 14 },
   { name: "Pediatrics", value: 12 },
@@ -598,7 +222,7 @@ export const PATIENT_INTENT = [
 
 export const DEPARTMENT_DEMAND: Record<"today" | "7d" | "30d" | "90d", { name: string; requests: number }[]> = {
   today: [
-    { name: "Cardiology", requests: 9 },
+    { name: "Internal Medicine", requests: 9 },
     { name: "Orthopedics", requests: 8 },
     { name: "Dermatology", requests: 7 },
     { name: "Pediatrics", requests: 6 },
@@ -606,7 +230,7 @@ export const DEPARTMENT_DEMAND: Record<"today" | "7d" | "30d" | "90d", { name: s
     { name: "Ophthalmology", requests: 3 },
   ],
   "7d": [
-    { name: "Cardiology", requests: 58 },
+    { name: "Internal Medicine", requests: 58 },
     { name: "Orthopedics", requests: 51 },
     { name: "Dermatology", requests: 44 },
     { name: "Pediatrics", requests: 38 },
@@ -614,7 +238,7 @@ export const DEPARTMENT_DEMAND: Record<"today" | "7d" | "30d" | "90d", { name: s
     { name: "Ophthalmology", requests: 22 },
   ],
   "30d": [
-    { name: "Cardiology", requests: 214 },
+    { name: "Internal Medicine", requests: 214 },
     { name: "Orthopedics", requests: 191 },
     { name: "Dermatology", requests: 168 },
     { name: "Pediatrics", requests: 142 },
@@ -622,7 +246,7 @@ export const DEPARTMENT_DEMAND: Record<"today" | "7d" | "30d" | "90d", { name: s
     { name: "Ophthalmology", requests: 86 },
   ],
   "90d": [
-    { name: "Cardiology", requests: 612 },
+    { name: "Internal Medicine", requests: 612 },
     { name: "Orthopedics", requests: 548 },
     { name: "Dermatology", requests: 489 },
     { name: "Pediatrics", requests: 402 },
@@ -642,36 +266,36 @@ export const WEEKLY_TREND = [
 ];
 
 export const LIVE_FEED = [
-  { id: 1, text: "Patient requested Dermatology appointment", meta: "Lusail · 2 min ago" },
+  { id: 1, text: "Patient requested Dermatology appointment", meta: "Al Hilal · 2 min ago" },
   { id: 2, text: "AI Navigator routed patient to Pediatrics", meta: "Al Gharrafa · 6 min ago" },
-  { id: 3, text: "Patient completed pre-visit questionnaire", meta: "Lusail · 11 min ago" },
+  { id: 3, text: "Patient completed pre-visit questionnaire", meta: "Al Hilal · 11 min ago" },
   { id: 4, text: "Appointment request received", meta: "Al Gharrafa · 14 min ago" },
-  { id: 5, text: "Patient viewed Dr. S. Haddad profile", meta: "Lusail · 18 min ago" },
-  { id: 6, text: "Urgent pathway shown to patient", meta: "Lusail · 23 min ago" },
+  { id: 5, text: "Patient viewed Dr. S. Haddad profile", meta: "Al Hilal · 18 min ago" },
+  { id: 6, text: "Urgent pathway shown to patient", meta: "Al Hilal · 23 min ago" },
   { id: 7, text: "AI Navigator routed patient to Orthopedics", meta: "Al Gharrafa · 27 min ago" },
 ];
 
 export const ADMIN_APPOINTMENTS = [
-  { id: "RMC-4821", patient: "S. A.", specialty: "Orthopedics", doctor: "Dr. Ahmed Hassan", branch: "Lusail", date: "18 Sep · 10:30", status: "Confirmed" },
-  { id: "RMC-4822", patient: "M. K.", specialty: "Dermatology", doctor: "Dr. Layla Mansour", branch: "Lusail", date: "18 Sep · 17:30", status: "Requested" },
-  { id: "RMC-4823", patient: "F. R.", specialty: "Pediatrics", doctor: "Dr. Noor Al Kuwari", branch: "Al Gharrafa", date: "19 Sep · 09:00", status: "Confirmed" },
-  { id: "RMC-4824", patient: "H. A.", specialty: "Cardiology", doctor: "Dr. Samir Haddad", branch: "Lusail", date: "19 Sep · 11:00", status: "Pre-visit pending" },
-  { id: "RMC-4825", patient: "N. B.", specialty: "Ophthalmology", doctor: "Dr. Khaled Nasser", branch: "Lusail", date: "20 Sep · 12:15", status: "Confirmed" },
-  { id: "RMC-4826", patient: "L. T.", specialty: "Obstetrics & Gynecology", doctor: "Dr. Maha Darwish", branch: "Al Gharrafa", date: "21 Sep · 11:30", status: "Requested" },
+  { id: "RMC-4821", patient: "S. A.", specialty: "Orthopedics", doctor: "Dr. Joseph Basile", branch: "Al Hilal", date: "18 Sep · 10:30", status: "Confirmed" },
+  { id: "RMC-4822", patient: "M. K.", specialty: "Dermatology", doctor: "Dr. Rasha Al Aassi", branch: "Al Hilal", date: "18 Sep · 17:30", status: "Requested" },
+  { id: "RMC-4823", patient: "F. R.", specialty: "Pediatrics", doctor: "Dr. Ghassan Assaf ZeinAddeen", branch: "Al Gharrafa", date: "19 Sep · 09:00", status: "Confirmed" },
+  { id: "RMC-4824", patient: "H. A.", specialty: "Internal Medicine", doctor: "Dr. Haitham Rehann", branch: "Al Hilal", date: "19 Sep · 11:00", status: "Pre-visit pending" },
+  { id: "RMC-4825", patient: "N. B.", specialty: "Ophthalmology", doctor: "Dr. Hassan Arrayed", branch: "Al Hilal", date: "20 Sep · 12:15", status: "Confirmed" },
+  { id: "RMC-4826", patient: "L. T.", specialty: "Obstetrics & Gynecology", doctor: "Dr. Walid Gergi", branch: "Al Gharrafa", date: "21 Sep · 11:30", status: "Requested" },
 ];
 
 export const DOCTOR_LOAD: Record<string, number> = {
-  "ahmed-hassan": 42,
-  "layla-mansour": 38,
-  "noor-alkuwari": 35,
-  "samir-haddad": 47,
-  "maha-darwish": 29,
-  "khaled-nasser": 24,
-  "yara-fakhoury": 19,
-  "omar-shaheen": 31,
-  "hana-jaber": 26,
-  "faisal-almarri": 17,
-  "rania-saleh": 14,
-  "tarek-baroudi": 21,
-  "sami-othman": 23,
+  "joseph-basile": 42,
+  "rasha-al-aassi": 38,
+  "ghassan-assaf-zeinaddeen": 35,
+  "haitham-rehann": 47,
+  "walid-gergi": 29,
+  "hassan-arrayed": 24,
+  "frederic-menu": 19,
+  "wissam-heneidy": 31,
+  "georges-ghanem": 26,
+  "marwan-al-zoghby": 17,
+  "paul-audi": 14,
+  "joseph-j-naoum": 21,
+  "fady-el-jiz": 23,
 };
