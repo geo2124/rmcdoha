@@ -19,7 +19,7 @@ function SettingsPage() {
             {[
               ["Name", "Royal Medical Center"],
               ["Location", "Doha, Qatar"],
-              ["Branches", "Lusail · Al Gharrafa"],
+              ["Branches", "Al Hilal · Al Gharrafa"],
               ["Languages", "Arabic · English"],
               ["Email", "info@rmcdoha.com"],
               ["Website", "rmcdoha.com"],

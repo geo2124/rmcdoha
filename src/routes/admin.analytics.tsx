@@ -38,7 +38,7 @@ function AnalyticsPage() {
       <Panel title="What this means" hint="Interpretation of the simulated period">
         <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
           <li>Patients who use the Navigator book at a materially higher rate than those who browse alone.</li>
-          <li>Cardiology and Orthopedics attract the highest digital demand — a capacity planning signal.</li>
+          <li>Internal Medicine and Orthopedics attract the highest digital demand — a capacity planning signal.</li>
           <li>Pre-visit summaries arrive for 3 in 4 booked appointments, shortening consultations.</li>
           <li>Weekend evenings are peak Navigator hours, when reception is least staffed.</li>
         </ul>

@@ -44,8 +44,8 @@ const TABS = [
 ] as const;
 
 const DOCS = [
-  { name: "Orthopedic consultation note", date: "12 Aug 2026", meta: "Dr. Ahmed Hassan · Lusail" },
-  { name: "Knee X-ray report", date: "12 Aug 2026", meta: "Diagnostic Imaging · Lusail" },
+  { name: "Orthopedic consultation note", date: "12 Aug 2026", meta: "Dr. Joseph Basile · Al Hilal" },
+  { name: "Knee X-ray report", date: "12 Aug 2026", meta: "Diagnostic Imaging · Al Hilal" },
   { name: "Annual health screening summary", date: "3 Mar 2026", meta: "Internal Medicine · Al Gharrafa" },
 ];
 
@@ -71,9 +71,9 @@ function PortalPage() {
   const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("appointments");
 
   const booked = appointments[0];
-  const doctor = booked ? doctorById(booked.doctorId) : doctorById("ahmed-hassan");
+  const doctor = booked ? doctorById(booked.doctorId) : doctorById("joseph-basile");
   const specialty = booked ? specialtyById(booked.specialtyId) : specialtyById("orthopedics");
-  const branch = booked ? branchById(booked.branch) : branchById("lusail");
+  const branch = booked ? branchById(booked.branch) : branchById("hilal");
   const dateLabel = booked
     ? (NEXT_DATES.find((d) => d.iso === booked.date)?.label ?? booked.date)
     : "September 18";

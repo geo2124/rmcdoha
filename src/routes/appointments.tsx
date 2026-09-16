@@ -47,7 +47,7 @@ export const Route = createFileRoute("/appointments")({
       {
         name: "description",
         content:
-          "Choose a speciality, doctor, branch, date and time to request an appointment at Royal Medical Center Lusail or Al Gharrafa.",
+          "Choose a speciality, doctor, branch, date and time to request an appointment at Royal Medical Center Al Hilal or Al Gharrafa.",
       },
       { property: "og:title", content: "Request an Appointment — Royal Medical Center Doha" },
       { property: "og:description", content: "A guided appointment request in a few simple steps." },

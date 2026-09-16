@@ -165,8 +165,8 @@ const RULES: { keywords: string[]; specialtyId: string; label: string; questions
   },
   {
     keywords: ["heart", "palpitation", "cardio", "blood pressure high", "cholesterol", "ecg"],
-    specialtyId: "cardiology",
-    label: "Cardiology",
+    specialtyId: "internal-pulmonary",
+    label: "Internal & Pulmonary Medicine",
     questions: [
       "What symptoms have you noticed?",
       "When do they usually occur?",
