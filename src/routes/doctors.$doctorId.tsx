@@ -116,7 +116,10 @@ function DoctorProfile() {
         <div className="grid gap-6">
           <article className="surface p-6">
             <h2 className="font-display text-xl font-bold">About the doctor</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{doctor.about}</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {doctor.about ??
+                `${doctor.name} practises at Royal Medical Center, Doha as ${doctor.title}. Profile details are published on the official Royal Medical Center website.`}
+            </p>
             <h3 className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
               Areas of expertise
             </h3>
@@ -127,6 +130,14 @@ function DoctorProfile() {
                 </li>
               ))}
             </ul>
+            <a
+              href={doctor.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex text-xs font-semibold text-primary hover:underline"
+            >
+              View the official Royal Medical Center profile
+            </a>
           </article>
 
           <article className="surface p-6">
@@ -138,30 +149,38 @@ function DoctorProfile() {
                 </li>
               ))}
             </ul>
-            <h3 className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
-              Consultation type
-            </h3>
-            <p className="mt-2 text-sm text-muted-foreground">{doctor.consultation.join(" · ")}</p>
+            {doctor.consultation && doctor.consultation.length > 0 && (
+              <>
+                <h3 className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                  Consultation type
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">{doctor.consultation.join(" · ")}</p>
+              </>
+            )}
           </article>
 
-          <article className="surface p-6">
-            <h2 className="font-display text-xl font-bold">Credentials</h2>
-            <ul className="mt-4 grid gap-2.5">
-              {doctor.credentials.map((c) => (
-                <li key={c} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <Stethoscope className="mt-0.5 size-4 shrink-0 text-primary" /> {c}
-                </li>
-              ))}
-            </ul>
-          </article>
+          {doctor.credentials && doctor.credentials.length > 0 && (
+            <article className="surface p-6">
+              <h2 className="font-display text-xl font-bold">Credentials</h2>
+              <ul className="mt-4 grid gap-2.5">
+                {doctor.credentials.map((c) => (
+                  <li key={c} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <Stethoscope className="mt-0.5 size-4 shrink-0 text-primary" /> {c}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          )}
         </div>
 
         <aside className="grid gap-6">
           <div className="surface p-6">
-            <h2 className="font-display text-lg font-bold">Available appointments</h2>
-            <p className="mt-1 text-xs text-muted-foreground">Demo availability for the coming days.</p>
+            <h2 className="font-display text-lg font-bold">Appointment times</h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Simulated demo times — Royal Medical Center confirms the real slot by phone.
+            </p>
             <div className="mt-4 grid grid-cols-3 gap-2">
-              {doctor.slots.map((slot) => (
+              {(doctor.slots ?? DEMO_SLOTS).map((slot) => (
                 <Button key={slot} asChild variant="soft" size="sm">
                   <Link to="/appointments" search={{ doctor: doctor.id, time: slot }}>
                     {slot}
@@ -177,16 +196,20 @@ function DoctorProfile() {
           </div>
 
           <div className="surface p-6">
-            <h2 className="font-display text-lg font-bold">Branch & insurance</h2>
+            <h2 className="font-display text-lg font-bold">Branch & contact</h2>
             <p className="mt-3 text-sm font-semibold">{branch.name}</p>
             <p className="text-sm text-muted-foreground">{branch.address}</p>
             <a href={`tel:${branch.phone.replace(/\s/g, "")}`} className="mt-2 inline-flex items-center gap-2 text-sm text-primary">
               <Phone className="size-3.5" /> {branch.phone}
             </a>
-            <h3 className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
-              Accepted insurance
-            </h3>
-            <p className="mt-2 text-sm text-muted-foreground">{doctor.insurance.join(" · ")}</p>
+            {doctor.insurance && doctor.insurance.length > 0 && (
+              <>
+                <h3 className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                  Accepted insurance
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">{doctor.insurance.join(" · ")}</p>
+              </>
+            )}
           </div>
         </aside>
       </div>
