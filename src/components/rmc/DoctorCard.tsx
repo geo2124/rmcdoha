@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { CalendarClock, ExternalLink, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { branchById, specialtyById, type Doctor } from "@/data/rmc";
+import { specialtyById, type Doctor } from "@/data/rmc";
 import { useLang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +35,7 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
   return (
     <article className="surface lift flex h-full flex-col gap-4 p-5">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4">
-        <DoctorAvatar name={doctor.name} imageUrl={doctor.imageUrl} />
+        <DoctorAvatar name={doctor.name} {...(doctor.imageUrl ? { imageUrl: doctor.imageUrl } : {})} />
         <div className="min-w-0">
           <h3 className="truncate font-display text-base font-bold">{doctor.name}</h3>
           <p className="truncate text-sm text-primary">{specialty?.name}</p>

@@ -51,7 +51,7 @@ function AdminDoctors() {
                 <div className="min-w-0">
                   <p className="truncate text-sm font-semibold">{d.name}</p>
                   <p className="truncate text-xs text-muted-foreground">
-                    {specialtyById(d.specialtyId)?.name} · {branchById(d.branch).name}
+                    {specialtyById(d.specialtyId)?.name} · {d.title}
                   </p>
                 </div>
                 <div className="min-w-0">
@@ -65,14 +65,14 @@ function AdminDoctors() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <span className="rounded-full bg-accent px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-accent-foreground">
-                    {d.availability}
+                    {d.availability ?? "Schedule by phone"}
                   </span>
                   <Button
                     variant="quiet"
                     size="sm"
                     onClick={() =>
                       toast.info(d.name, {
-                        description: `${d.title} · ${d.languages.join(", ")} · next available ${d.nextAvailable}`,
+                        description: `${d.title} · ${d.expertise.slice(0, 3).join(", ")}`,
                       })
                     }
                   >

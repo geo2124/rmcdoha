@@ -166,7 +166,7 @@ export const SERVICES: ServiceItem[] = [
 
 export const specialtyById = (id: string) => SPECIALTIES.find((s) => s.id === id);
 export const doctorById = (id: string) => DOCTORS.find((d) => d.id === id);
-export const branchById = (id: BranchId) => BRANCHES.find((b) => b.id === id) ?? BRANCHES[0];
+export const branchById = (id?: BranchId): Branch => BRANCHES.find((b) => b.id === id) ?? (BRANCHES[0] as Branch);
 export const doctorsBySpecialty = (id: string) => DOCTORS.filter((d) => d.specialtyId === id);
 
 export const NEXT_DATES = (() => {
