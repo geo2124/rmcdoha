@@ -27,7 +27,7 @@ export const Route = createFileRoute("/doctors/$doctorId")({
     const { doctor } = loaderData;
     const specialty = specialtyById(doctor.specialtyId)?.name ?? "Specialist";
     const title = `${doctor.name} — ${specialty} | Royal Medical Center`;
-    const description = `${doctor.name}, ${doctor.title} at Royal Medical Center ${branchById(doctor.branch).name}. ${doctor.experience} years of experience.`;
+    const description = `${doctor.name}, ${doctor.title} at Royal Medical Center, Doha. Areas of care: ${doctor.expertise.slice(0, 3).join(", ")}.`;
     return {
       meta: [
         { title },
@@ -60,23 +60,31 @@ function DoctorProfile() {
 
           <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-5">
-              <DoctorAvatar name={doctor.name} className="size-20 rounded-3xl text-2xl sm:size-24" />
+              <DoctorAvatar
+                name={doctor.name}
+                {...(doctor.imageUrl ? { imageUrl: doctor.imageUrl } : {})}
+                className="size-20 rounded-3xl text-2xl sm:size-24"
+              />
               <div className="min-w-0">
                 <h1 className="text-2xl font-extrabold sm:text-4xl">{doctor.name}</h1>
                 <p className="mt-1 text-base font-semibold text-primary">{specialty?.name}</p>
                 <p className="text-sm text-muted-foreground">{doctor.title}</p>
                 <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
                   <span className="inline-flex items-center gap-1.5">
-                    <MapPin className="size-3.5" /> {branch.name}
+                    <MapPin className="size-3.5" /> Royal Medical Center, Doha
                   </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Languages className="size-3.5" /> {doctor.languages.join(", ")}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Award className="size-3.5" /> {doctor.experience} years of experience
-                  </span>
+                  {doctor.languages && doctor.languages.length > 0 && (
+                    <span className="inline-flex items-center gap-1.5">
+                      <Languages className="size-3.5" /> {doctor.languages.join(", ")}
+                    </span>
+                  )}
+                  {doctor.experience !== undefined && (
+                    <span className="inline-flex items-center gap-1.5">
+                      <Award className="size-3.5" /> {doctor.experience} years of experience
+                    </span>
+                  )}
                   <span className="inline-flex items-center gap-1.5 text-foreground">
-                    <CalendarClock className="size-3.5 text-primary" /> Next available: {doctor.nextAvailable}
+                    <CalendarClock className="size-3.5 text-primary" /> Call reception to confirm availability
                   </span>
                 </div>
               </div>
