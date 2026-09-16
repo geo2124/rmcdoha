@@ -30,7 +30,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Royal Medical Center Doha — Healthcare, made easier." },
       {
         property: "og:description",
-        content: "Find the right care, book appointments and prepare for your visit at RMC Lusail and Al Gharrafa.",
+        content: "Find the right care, book appointments and prepare for your visit at RMC Al Hilal and Al Gharrafa.",
       },
     ],
   }),

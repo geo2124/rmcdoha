@@ -270,7 +270,7 @@ export const LIVE_FEED = [
   { id: 2, text: "AI Navigator routed patient to Pediatrics", meta: "Al Gharrafa · 6 min ago" },
   { id: 3, text: "Patient completed pre-visit questionnaire", meta: "Al Hilal · 11 min ago" },
   { id: 4, text: "Appointment request received", meta: "Al Gharrafa · 14 min ago" },
-  { id: 5, text: "Patient viewed Dr. S. Haddad profile", meta: "Al Hilal · 18 min ago" },
+  { id: 5, text: "Patient viewed Dr. Joseph Basile profile", meta: "Al Hilal · 18 min ago" },
   { id: 6, text: "Urgent pathway shown to patient", meta: "Al Hilal · 23 min ago" },
   { id: 7, text: "AI Navigator routed patient to Orthopedics", meta: "Al Gharrafa · 27 min ago" },
 ];

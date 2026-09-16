@@ -44,8 +44,8 @@ const TABS = [
 ] as const;
 
 const DOCS = [
-  { name: "Orthopedic consultation note", date: "12 Aug 2026", meta: "Dr. Ahmed Hassan · Lusail" },
-  { name: "Knee X-ray report", date: "12 Aug 2026", meta: "Diagnostic Imaging · Lusail" },
+  { name: "Orthopedic consultation note", date: "12 Aug 2026", meta: "Dr. Joseph Basile · Al Hilal" },
+  { name: "Knee X-ray report", date: "12 Aug 2026", meta: "Diagnostic Imaging · Al Hilal" },
   { name: "Annual health screening summary", date: "3 Mar 2026", meta: "Internal Medicine · Al Gharrafa" },
 ];
 

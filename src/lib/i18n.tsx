@@ -79,7 +79,7 @@ const D: Dict = {
   },
   "home.stat1": { en: "13 specialities", ar: "13 تخصصاً" },
   "home.stat2": { en: "Same-week appointments", ar: "مواعيد خلال نفس الأسبوع" },
-  "home.stat3": { en: "Lusail & Al Gharrafa", ar: "لوسيل والغرافة" },
+  "home.stat3": { en: "Al Hilal & Al Gharrafa", ar: "الهلال والغرافة" },
   "home.cardEyebrow": { en: "Next step, clear", ar: "خطوة تالية واضحة" },
   "home.cardBody": {
     en: "Patients tell us what they need — the platform guides them to the right service.",
@@ -105,8 +105,8 @@ const D: Dict = {
   "home.step4body": { en: "A pre-visit summary ready for the care team.", ar: "ملخص قبل الزيارة جاهز للفريق الطبي." },
   "home.specH2": { en: "Specialities", ar: "التخصصات" },
   "home.specSub": {
-    en: "Care across 13 specialities at our Lusail and Al Gharrafa branches.",
-    ar: "رعاية في 13 تخصصاً في فرعي لوسيل والغرافة.",
+    en: "Care across 13 specialities at our Al Hilal and Al Gharrafa branches.",
+    ar: "رعاية في 13 تخصصاً في فرعي الهلال والغرافة.",
   },
   "home.specAll": { en: "View all specialities", ar: "عرض جميع التخصصات" },
   "home.docH2": { en: "Meet our doctors", ar: "تعرف على أطبائنا" },
@@ -120,7 +120,7 @@ const D: Dict = {
     ar: "في الأعراض الشديدة لا تنتظر موعداً. معلومات الطوارئ والاتجاهات على بعد لمسة واحدة.",
   },
   "home.urgentCta": { en: "Emergency information", ar: "معلومات الطوارئ" },
-  "home.callLusail": { en: "Call Lusail", ar: "اتصل بفرع لوسيل" },
+  "home.callLusail": { en: "Call Al Hilal", ar: "اتصل بفرع الهلال" },
   "home.managementDemo": { en: "Management Demo", ar: "عرض الإدارة" },
 };
 
