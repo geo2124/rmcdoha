@@ -14,6 +14,8 @@ import { DoctorAvatar, DoctorCard } from "@/components/rmc/DoctorCard";
 import { Button } from "@/components/ui/button";
 import { branchById, doctorById, doctorsBySpecialty, specialtyById } from "@/data/rmc";
 
+const DEMO_SLOTS = ["09:30", "11:00", "12:30", "16:00", "17:30", "18:45"];
+
 export const Route = createFileRoute("/doctors/$doctorId")({
   loader: ({ params }) => {
     const doctor = doctorById(params.doctorId);
