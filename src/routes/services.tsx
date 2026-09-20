@@ -27,11 +27,9 @@ export const Route = createFileRoute("/services")({
 
 const CATEGORIES = [
   "All",
-  "Clinical Services",
-  "Diagnostics",
-  "Laboratory",
-  "Pharmacy",
-  "Specialized Procedures",
+  "Medical Departments",
+  "Pharmacy & Laboratory Exams",
+  "Med Technologies",
 ] as const;
 
 function ServicesPage() {

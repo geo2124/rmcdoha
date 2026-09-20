@@ -25,7 +25,7 @@ export const Route = createFileRoute("/specialities")({
 });
 
 function SpecialitiesPage() {
-  const groups = ["Clinical Services", "Specialized Procedures", "Diagnostics"] as const;
+  const groups = ["Medical Departments", "Support Services"] as const;
 
   return (
     <PublicShell>
