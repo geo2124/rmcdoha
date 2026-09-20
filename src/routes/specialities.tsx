@@ -32,7 +32,7 @@ function SpecialitiesPage() {
       <PageHeader
         eyebrow="Specialities"
         title="Care organised around the way patients think."
-        subtitle="Every speciality lists its doctors, what it treats and how soon you can be seen."
+        subtitle="Explore Royal Medical Center’s published departments, specialist teams and support services."
       />
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">

@@ -41,7 +41,7 @@ function ServicesPage() {
       <PageHeader
         eyebrow="Services"
         title="Everything under one roof."
-        subtitle="Consultations, diagnostics, laboratory, pharmacy and procedures — coordinated across both branches."
+        subtitle="Browse RMC’s published medical departments, pharmacy and laboratory services, and medical technologies."
       >
         <div className="flex flex-wrap gap-2">
           {CATEGORIES.map((c) => (
