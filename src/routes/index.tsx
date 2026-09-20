@@ -50,36 +50,36 @@ function Index() {
           <div className="relative flex min-h-[610px] items-end overflow-hidden lg:min-h-[760px]">
             <img src={heroImage} alt="Royal Medical Center clinical reception in Doha" className="absolute inset-0 size-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/55 to-primary-deep/10" />
-            <div className="relative z-10 max-w-4xl p-7 text-primary-foreground sm:p-10 lg:p-16">
+            <div className="relative z-10 max-w-4xl p-7 text-foreground sm:p-10 lg:p-16">
               <div className="mb-7 inline-flex items-center gap-2 border-s-2 border-gold ps-3 text-xs font-bold uppercase tracking-[0.18em] text-gold">
                 <ShieldCheck className="size-4" /> Royal Medical Center · Doha
               </div>
               <h1 className="max-w-3xl text-5xl font-bold leading-[0.98] sm:text-6xl lg:text-8xl">
                 Advanced care, <span className="text-primary">connected.</span>
               </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/72 sm:text-lg">
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/72 sm:text-lg">
                 One precise digital front door to RMC’s doctors, departments and patient services across Doha.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild variant="navigator" size="xl">
                   <Link to="/appointments">Request appointment <ArrowRight /></Link>
                 </Button>
-                <Button asChild size="xl" className="border border-primary-foreground/25 bg-primary-foreground/8 text-primary-foreground hover:bg-primary-foreground/14">
+                <Button asChild size="xl" className="border border-primary-foreground/25 bg-card/8 text-foreground hover:bg-card/14">
                   <Link to="/doctors">Find a specialist</Link>
                 </Button>
               </div>
               <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-primary-foreground/15 pt-6">
                 {[[SPECIALTIES.length, "Medical departments"], [DOCTORS.length, "Published doctors"], [BRANCHES.length, "Doha branches"]].map(([value, label]) => (
                   <div key={label}>
-                    <strong className="font-display text-2xl text-primary-foreground">{value}</strong>
-                    <span className="ms-2 text-xs text-primary-foreground/55">{label}</span>
+                    <strong className="font-display text-2xl text-foreground">{value}</strong>
+                    <span className="ms-2 text-xs text-foreground/55">{label}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          <aside className="command-grid relative flex flex-col justify-between bg-primary-deep p-6 text-primary-foreground sm:p-8 lg:p-10">
+          <aside className="command-grid relative flex flex-col justify-between bg-midnight p-6 text-foreground sm:p-8 lg:p-10">
             <div>
               <div className="flex items-center justify-between border-b border-primary-foreground/15 pb-5">
                 <p className="font-display text-xl font-semibold">Patient access</p>
@@ -89,22 +89,22 @@ function Index() {
               </div>
               <div className="mt-6 space-y-3">
                 {quickAccess.map((item, index) => (
-                  <Link key={item.to} to={item.to} className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 rounded-md border border-primary-foreground/12 bg-primary-foreground/7 p-5 backdrop-blur-sm transition-colors hover:border-primary/60 hover:bg-primary-foreground/12">
+                  <Link key={item.to} to={item.to} className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 rounded-md border border-primary-foreground/12 bg-card/7 p-5 backdrop-blur-sm transition-colors hover:border-primary/60 hover:bg-card/12">
                     <span className={item.tone === "gold" ? "grid size-11 place-items-center bg-gold/15 text-gold" : "grid size-11 place-items-center bg-primary/15 text-primary"}>
                       <item.icon className="size-5" />
                     </span>
                     <span>
                       <span className="block font-semibold">{item.title}</span>
-                      <span className="mt-1 block text-xs leading-relaxed text-primary-foreground/48">{item.body}</span>
+                      <span className="mt-1 block text-xs leading-relaxed text-foreground/48">{item.body}</span>
                     </span>
-                    <ArrowUpRight className="size-4 text-primary-foreground/35 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
-                    <span className="col-start-2 text-[0.6rem] font-bold tracking-[0.16em] text-primary-foreground/25">0{index + 1}</span>
+                    <ArrowUpRight className="size-4 text-foreground/35 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+                    <span className="col-start-2 text-[0.6rem] font-bold tracking-[0.16em] text-foreground/25">0{index + 1}</span>
                   </Link>
                 ))}
               </div>
             </div>
             <div className="mt-10 border-t border-primary-foreground/15 pt-6">
-              <Link to="/emergency" className="group flex items-center justify-between text-sm font-semibold text-primary-foreground/75 hover:text-primary-foreground">
+              <Link to="/emergency" className="group flex items-center justify-between text-sm font-semibold text-foreground/75 hover:text-foreground">
                 <span className="flex items-center gap-3"><HeartPulse className="size-5 text-urgent" /> Emergency information</span>
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -125,13 +125,13 @@ function Index() {
           </div>
           <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {SPECIALTIES.slice(0, 6).map((specialty, index) => (
-              <Link key={specialty.id} to="/doctors" search={{ specialty: specialty.id }} className="group min-h-56 bg-card p-6 transition-colors hover:bg-primary-deep hover:text-primary-foreground">
+              <Link key={specialty.id} to="/doctors" search={{ specialty: specialty.id }} className="group min-h-56 bg-card p-6 transition-colors hover:bg-midnight hover:text-foreground">
                 <div className="flex items-start justify-between">
                   <IconTile name={specialty.icon} className="rounded-sm group-hover:bg-primary/15 group-hover:text-primary" />
-                  <span className="text-xs font-bold text-muted-foreground group-hover:text-primary-foreground/35">0{index + 1}</span>
+                  <span className="text-xs font-bold text-muted-foreground group-hover:text-foreground/35">0{index + 1}</span>
                 </div>
-                <h3 className="mt-10 text-xl font-bold text-primary-deep group-hover:text-primary-foreground">{specialty.name}</h3>
-                <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground group-hover:text-primary-foreground/55">{specialty.blurb}</p>
+                <h3 className="mt-10 text-xl font-bold text-primary-deep group-hover:text-foreground">{specialty.name}</h3>
+                <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground group-hover:text-foreground/55">{specialty.blurb}</p>
               </Link>
             ))}
           </div>
@@ -143,12 +143,12 @@ function Index() {
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold">A guided patient journey</p>
             <h2 className="mt-4 max-w-xl text-4xl font-bold leading-tight sm:text-5xl">From uncertainty to the right next step.</h2>
-            <p className="mt-5 max-w-lg leading-relaxed text-primary-foreground/60">The RMC Health Navigator safely guides patients toward relevant care without diagnosing or replacing a clinician.</p>
+            <p className="mt-5 max-w-lg leading-relaxed text-foreground/60">The RMC Health Navigator safely guides patients toward relevant care without diagnosing or replacing a clinician.</p>
             <Button asChild variant="navigator" size="lg" className="mt-8">
               <Link to="/navigator"><Sparkles /> Start Health Navigator</Link>
             </Button>
           </div>
-          <ol className="grid gap-px overflow-hidden rounded-lg bg-primary-foreground/12 sm:grid-cols-2">
+          <ol className="grid gap-px overflow-hidden rounded-lg bg-card/12 sm:grid-cols-2">
             {[
               ["Tell us what you need", "Share a symptom or care goal in your own words."],
               ["Find relevant care", "Review matching RMC departments and doctors."],
@@ -158,7 +158,7 @@ function Index() {
               <li key={title} className="bg-midnight-raised p-7">
                 <span className="font-display text-sm font-bold text-primary">0{index + 1}</span>
                 <h3 className="mt-8 text-xl font-semibold">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-primary-foreground/52">{body}</p>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/52">{body}</p>
               </li>
             ))}
           </ol>

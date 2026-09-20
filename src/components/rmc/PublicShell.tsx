@@ -58,7 +58,7 @@ function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-primary-foreground/10 bg-midnight text-foreground shadow-[var(--shadow-card)]">
+    <header className="sticky top-0 z-50 border-b border-primary-foreground/10 bg-midnight text-primary-foreground shadow-[var(--shadow-card)]">
       <div className="mx-auto flex h-[4.75rem] max-w-[90rem] items-center gap-4 px-4 sm:px-6 lg:h-24 lg:px-10">
         <Logo compact />
 
