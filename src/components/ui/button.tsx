@@ -16,12 +16,12 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary-deep text-primary-foreground shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:bg-midnight-raised",
+        hero: "bg-midnight text-foreground shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:bg-midnight-raised",
         soft: "bg-accent text-accent-foreground hover:bg-primary-soft",
         navigator:
           "bg-primary text-primary-deep shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:bg-primary/90",
         urgent: "bg-urgent text-urgent-foreground shadow-sm hover:bg-urgent/90",
-        quiet: "border border-border bg-card text-primary-deep hover:-translate-y-0.5 hover:border-primary hover:bg-accent",
+        quiet: "border border-border bg-card text-primary-deep hover:-translate-y-0.5 hover:border-primary hover:bg-accent hover:text-accent-foreground",
       },
       size: {
         default: "h-9 px-4 py-2",

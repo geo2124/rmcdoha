@@ -123,7 +123,7 @@ function AppointmentsPage() {
 
   return (
     <PublicShell>
-      <section className="command-grid border-b border-primary-foreground/10 bg-primary-deep text-primary-foreground">
+      <section className="command-grid border-b border-primary-foreground/10 bg-midnight text-foreground">
         <div ref={topRef} className="mx-auto max-w-[90rem] px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold">Appointments</p>
           <h1 className="mt-4 text-4xl font-bold sm:text-6xl">Request an appointment</h1>

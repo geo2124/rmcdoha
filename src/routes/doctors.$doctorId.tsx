@@ -52,7 +52,7 @@ function DoctorProfile() {
 
   return (
     <PublicShell>
-      <section className="command-grid border-b border-primary-foreground/10 bg-primary-deep text-primary-foreground">
+      <section className="command-grid border-b border-primary-foreground/10 bg-midnight text-foreground">
         <div className="mx-auto max-w-[90rem] px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
           <nav className="text-xs text-primary-foreground/50">
             <Link to="/doctors" className="hover:text-primary-foreground">

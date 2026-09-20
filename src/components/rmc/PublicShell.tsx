@@ -58,7 +58,7 @@ function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-primary-foreground/10 bg-primary-deep text-primary-foreground shadow-[var(--shadow-card)]">
+    <header className="sticky top-0 z-50 border-b border-primary-foreground/10 bg-midnight text-foreground shadow-[var(--shadow-card)]">
       <div className="mx-auto flex h-[4.75rem] max-w-[90rem] items-center gap-4 px-4 sm:px-6 lg:h-24 lg:px-10">
         <Logo compact />
 
@@ -174,7 +174,7 @@ function MobileTabBar() {
 function SiteFooter() {
   const { t } = useLang();
   return (
-    <footer className="mt-24 border-t border-primary-foreground/10 bg-primary-deep text-primary-foreground">
+    <footer className="mt-24 border-t border-primary-foreground/10 bg-midnight text-foreground">
       <div className="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.4fr_1fr_0.8fr_0.9fr] lg:px-10 lg:py-20">
         <div>
           <div className="flex items-center gap-3">
@@ -287,7 +287,7 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-primary-foreground/10 bg-primary-deep text-primary-foreground">
+    <section className="relative overflow-hidden border-b border-primary-foreground/10 bg-midnight text-foreground">
       <div className="command-grid absolute inset-0 opacity-40" />
       <div className="relative mx-auto max-w-[90rem] px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
         {eyebrow && (

@@ -50,7 +50,7 @@ export function KpiCard({ label, value, delta }: { label: string; value: string;
 
 export function DemoBadge() {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-sand px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-foreground/70">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-foreground">
       Demo Data
     </span>
   );

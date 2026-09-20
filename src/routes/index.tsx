@@ -138,7 +138,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-primary-deep text-primary-foreground">
+      <section className="bg-midnight text-foreground">
         <div className="mx-auto grid max-w-[90rem] gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:px-10 lg:py-28">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold">A guided patient journey</p>
