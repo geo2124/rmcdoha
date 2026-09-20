@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold cursor-pointer transition-[color,background-color,border-color,box-shadow,transform] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -16,18 +16,18 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary text-primary-foreground shadow-[var(--shadow-card)] hover:bg-primary-deep",
+        hero: "bg-primary-deep text-primary-foreground shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:bg-primary",
         soft: "bg-accent text-accent-foreground hover:bg-primary-soft",
         navigator:
           "brand-gradient text-primary-foreground shadow-[var(--shadow-card)] hover:opacity-92",
         urgent: "bg-urgent text-urgent-foreground shadow-sm hover:bg-urgent/90",
-        quiet: "border border-border bg-card text-foreground hover:border-primary/40",
+        quiet: "border border-border bg-card text-primary-deep hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-11 rounded-lg px-6 text-[0.95rem]",
-        xl: "h-13 rounded-xl px-7 text-base",
+        lg: "h-11 rounded-md px-6 text-[0.95rem]",
+        xl: "h-13 rounded-md px-7 text-base",
         icon: "h-9 w-9",
       },
     },
