@@ -32,19 +32,21 @@ const NAV = [
 function LanguageToggle() {
   const { lang, setLang } = useLang();
   return (
-    <div className="flex items-center rounded-full border border-border bg-card p-0.5 text-xs font-semibold">
+    <div className="flex items-center rounded-md border border-border bg-card p-0.5 text-xs font-semibold">
       {(["en", "ar"] as const).map((l) => (
-        <button
+        <Button
           key={l}
           type="button"
+          variant="ghost"
+          size="sm"
           onClick={() => setLang(l)}
           className={cn(
-            "rounded-full px-2.5 py-1 transition-colors",
+            "h-7 rounded px-2.5 py-1 transition-colors",
             lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
           )}
         >
           {l === "en" ? "English" : "العربية"}
-        </button>
+        </Button>
       ))}
     </div>
   );
@@ -55,8 +57,8 @@ function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-card/90 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:h-20">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-card/92 backdrop-blur-xl">
+      <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center gap-4 px-4 sm:px-6 lg:h-20">
         <Logo compact />
 
         <nav className="ms-auto hidden items-center gap-1 xl:flex">
@@ -65,7 +67,7 @@ function SiteHeader() {
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground data-[status=active]:bg-accent data-[status=active]:text-accent-foreground"
+              className="border-b-2 border-transparent px-2 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary-deep data-[status=active]:border-primary data-[status=active]:text-primary-deep"
             >
               {t(item.key)}
             </Link>
@@ -82,14 +84,16 @@ function SiteHeader() {
           <Button asChild variant="hero" size="sm" className="hidden lg:inline-flex">
             <Link to="/appointments">{t("nav.request")}</Link>
           </Button>
-          <button
+          <Button
             type="button"
+            variant="outline"
+            size="icon"
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
-            className="grid size-10 place-items-center rounded-lg border border-border xl:hidden"
+            className="size-10 rounded-md xl:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -169,7 +173,7 @@ function MobileTabBar() {
 function SiteFooter() {
   const { t } = useLang();
   return (
-    <footer className="mt-24 border-t border-border bg-card">
+    <footer className="mt-24 border-t border-primary-deep bg-primary-deep text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-3">
@@ -178,10 +182,10 @@ function SiteFooter() {
               <p className="font-display text-sm font-extrabold uppercase tracking-[0.1em] text-primary-deep">
                 {t("brand.name")}
               </p>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{t("brand.tagline")}</p>
+               <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/65">{t("brand.tagline")}</p>
             </div>
           </div>
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
+           <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
             One digital experience connecting our doctors, specialities and services to the people who need them.
           </p>
           <div className="mt-4 flex gap-2">
@@ -190,7 +194,7 @@ function SiteFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"
-              className="grid size-9 place-items-center rounded-lg border border-border text-muted-foreground transition-colors hover:text-primary"
+               className="grid size-9 place-items-center rounded-md border border-primary-foreground/20 text-primary-foreground/70 transition-colors hover:border-primary-foreground/50 hover:text-primary-foreground"
             >
               <Facebook className="size-4" />
             </a>
@@ -199,7 +203,7 @@ function SiteFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
-              className="grid size-9 place-items-center rounded-lg border border-border text-muted-foreground transition-colors hover:text-primary"
+               className="grid size-9 place-items-center rounded-md border border-primary-foreground/20 text-primary-foreground/70 transition-colors hover:border-primary-foreground/50 hover:text-primary-foreground"
             >
               <Instagram className="size-4" />
             </a>
@@ -207,19 +211,19 @@ function SiteFooter() {
         </div>
 
         <div>
-          <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">Branches</h4>
+          <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-gold">Branches</h4>
           <ul className="mt-4 space-y-4 text-sm">
             {BRANCHES.map((b) => (
               <li key={b.id}>
                 <p className="font-semibold">{b.name}</p>
-                <p className="text-muted-foreground">{b.address}</p>
-                <a href={`tel:${b.phone.replace(/\s/g, "")}`} className="mt-1 inline-flex items-center gap-2 text-primary">
+                <p className="text-primary-foreground/65">{b.address}</p>
+                <a href={`tel:${b.phone.replace(/\s/g, "")}`} className="mt-1 inline-flex items-center gap-2 text-primary-foreground">
                   <Phone className="size-3.5" /> {b.phone}
                 </a>
               </li>
             ))}
             <li>
-              <a href="mailto:info@rmcdoha.com" className="inline-flex items-center gap-2 text-primary">
+              <a href="mailto:info@rmcdoha.com" className="inline-flex items-center gap-2 text-primary-foreground">
                 <Mail className="size-3.5" /> info@rmcdoha.com
               </a>
             </li>
@@ -227,8 +231,8 @@ function SiteFooter() {
         </div>
 
         <div>
-          <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">Explore</h4>
-          <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
+          <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-gold">Explore</h4>
+          <ul className="mt-4 space-y-2.5 text-sm text-primary-foreground/70">
             <li><Link to="/doctors" className="hover:text-primary">Doctors</Link></li>
             <li><Link to="/specialities" className="hover:text-primary">Specialities</Link></li>
             <li><Link to="/services" className="hover:text-primary">Services</Link></li>
@@ -239,19 +243,19 @@ function SiteFooter() {
         </div>
 
         <div>
-          <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">Platform</h4>
-          <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
+          <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-gold">Platform</h4>
+          <ul className="mt-4 space-y-2.5 text-sm text-primary-foreground/70">
             <li><Link to="/portal" className="hover:text-primary">Patient Portal</Link></li>
             <li><Link to="/admin" className="hover:text-primary">Management Demo</Link></li>
             <li><span className="cursor-default">Privacy</span></li>
             <li><span className="cursor-default">Terms</span></li>
           </ul>
-          <p className="mt-6 rounded-xl bg-muted p-3 text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-6 rounded-md bg-primary-foreground/8 p-3 text-xs leading-relaxed text-primary-foreground/65">
             {t("footer.rights")} All doctors, availability and figures shown are simulated demo data.
           </p>
         </div>
       </div>
-      <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
+      <div className="border-t border-primary-foreground/15 py-5 text-center text-xs text-primary-foreground/60">
         © {new Date().getFullYear()} Royal Medical Center · Doha, Qatar
       </div>
     </footer>
@@ -282,12 +286,12 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <section className="soft-gradient border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16">
+    <section className="border-b border-border bg-card">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-20">
         {eyebrow && (
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
         )}
-        <h1 className="mt-3 max-w-3xl text-3xl font-extrabold sm:text-4xl lg:text-5xl">{title}</h1>
+        <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-tight text-primary-deep sm:text-5xl lg:text-6xl">{title}</h1>
         {subtitle && <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">{subtitle}</p>}
         {children && <div className="mt-8">{children}</div>}
       </div>

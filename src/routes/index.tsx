@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  ArrowUpRight,
   CalendarDays,
   HeartPulse,
   MessageSquareHeart,
@@ -8,13 +9,13 @@ import {
   ShieldCheck,
   Sparkles,
   Stethoscope,
-  UserRound,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PublicShell } from "@/components/rmc/PublicShell";
 import { IconTile } from "@/components/rmc/SpecialtyIcon";
 import { DoctorCard } from "@/components/rmc/DoctorCard";
-import { DOCTORS, SPECIALTIES } from "@/data/rmc";
+import { BRANCHES, DOCTORS, SPECIALTIES } from "@/data/rmc";
 import { useLang } from "@/lib/i18n";
 import heroImage from "@/assets/rmc-hero.jpg";
 
@@ -49,17 +50,16 @@ function Index() {
 
   return (
     <PublicShell>
-      {/* Hero */}
-      <section className="soft-gradient border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-20">
-          <div className="rise">
-            <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-primary">
+      <section className="px-4 pb-12 pt-6 sm:px-6 lg:pb-20 lg:pt-10">
+        <div className="relative mx-auto grid max-w-7xl overflow-hidden rounded-xl border border-border bg-card shadow-[var(--shadow-lift)] lg:min-h-[660px] lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="relative z-10 flex flex-col justify-center px-6 py-12 sm:px-10 lg:px-14 lg:py-16">
+            <p className="inline-flex w-fit items-center gap-2 rounded-md bg-primary-soft px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-primary-deep">
               <ShieldCheck className="size-3.5" /> {t("home.eyebrow")}
             </p>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-7 max-w-xl text-5xl font-extrabold leading-[1.02] text-primary-deep sm:text-6xl lg:text-7xl">
               {t("home.h1")}
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
               {t("home.sub")}
             </p>
 
@@ -74,55 +74,31 @@ function Index() {
               </Button>
             </div>
 
-            <Link
-              to="/navigator"
-              className="surface lift mt-6 flex max-w-md items-center gap-4 p-4"
-            >
-              <span className="brand-gradient grid size-11 shrink-0 place-items-center rounded-xl text-primary-foreground">
-                <Sparkles className="size-5" />
-              </span>
-              <span className="min-w-0">
-                <span className="block truncate font-display text-sm font-bold">✦ {t("home.cta3")}</span>
-                <span className="block truncate text-xs text-muted-foreground">
-                  {t("home.cta3sub")}
-                </span>
-              </span>
-              <ArrowRight className="ms-auto size-4 shrink-0 text-primary" />
-            </Link>
-
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-2">
-                <UserRound className="size-4 text-primary" /> {t("home.stat1")}
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <CalendarDays className="size-4 text-primary" /> {t("home.stat2")}
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Phone className="size-4 text-primary" /> {t("home.stat3")}
-              </span>
+            <div className="mt-10 grid max-w-xl grid-cols-3 border-t border-border pt-5 text-xs text-muted-foreground">
+              <span className="pe-3"><strong className="block text-lg text-primary-deep">{SPECIALTIES.length}</strong>Departments</span>
+              <span className="border-s border-border px-3"><strong className="block text-lg text-primary-deep">{DOCTORS.length}</strong>Published doctors</span>
+              <span className="border-s border-border ps-3"><strong className="block text-lg text-primary-deep">2</strong>Doha branches</span>
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative min-h-[380px] lg:min-h-full">
             <img
               src={heroImage}
               alt="Reception area of Royal Medical Center in Doha with a patient speaking to a clinician"
               width={1600}
               height={1200}
-              className="aspect-[4/3] w-full rounded-3xl border border-border object-cover shadow-[var(--shadow-lift)]"
+              className="absolute inset-0 size-full object-cover"
             />
-            <div className="surface absolute -bottom-6 start-6 hidden max-w-[15rem] p-4 sm:block">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">{t("home.cardEyebrow")}</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {t("home.cardBody")}
-              </p>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-deep/85 to-transparent p-6 pt-24 text-primary-foreground sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{t("home.cardEyebrow")}</p>
+              <p className="mt-2 max-w-sm text-sm text-primary-foreground/85">{t("home.cardBody")}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* How can we help */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-20">
         <div className="max-w-2xl">
           <h2 className="text-3xl font-extrabold sm:text-4xl">{t("home.help")}</h2>
           <p className="mt-3 text-muted-foreground">{t("home.helpSub")}</p>
@@ -130,7 +106,7 @@ function Index() {
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {helpCards.map((card) => (
-            <Link key={card.to} to={card.to} className="surface lift group flex flex-col gap-4 p-6">
+            <Link key={card.to} to={card.to} className="surface lift group flex min-h-64 flex-col gap-4 p-6">
               <IconTile name={card.icon} className="size-12 group-hover:bg-primary group-hover:text-primary-foreground" />
               <div>
                 <h3 className="font-display text-lg font-bold">{t(card.title)}</h3>
@@ -145,15 +121,15 @@ function Index() {
       </section>
 
       {/* Journey strip */}
-      <section className="border-y border-border bg-card">
+      <section className="border-y border-primary-deep bg-primary-deep text-primary-foreground">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{t("home.storyEyebrow")}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold">{t("home.storyEyebrow")}</p>
               <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
                 {t("home.storyH2")}
               </h2>
-              <p className="mt-4 text-muted-foreground">
+              <p className="mt-4 text-primary-foreground/70">
                 {t("home.storyBody")}
               </p>
               <Button asChild variant="soft" size="lg" className="mt-6">
@@ -170,15 +146,15 @@ function Index() {
                 { icon: CalendarDays, title: t("home.step3"), body: t("home.step3body") },
                 { icon: HeartPulse, title: t("home.step4"), body: t("home.step4body") },
               ].map((step, i) => (
-                <li key={step.title} className="surface p-5">
+                <li key={step.title} className="rounded-md border border-primary-foreground/15 bg-primary-foreground/7 p-5">
                   <div className="flex items-center gap-3">
                     <span className="grid size-8 place-items-center rounded-lg bg-primary-soft text-xs font-bold text-primary-deep">
                       {i + 1}
                     </span>
-                    <step.icon className="size-5 text-primary" strokeWidth={1.6} />
+                    <step.icon className="size-5 text-gold" strokeWidth={1.6} />
                   </div>
                   <p className="mt-3 font-display font-bold">{step.title}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{step.body}</p>
+                  <p className="mt-1 text-sm text-primary-foreground/65">{step.body}</p>
                 </li>
               ))}
             </ol>
@@ -200,27 +176,28 @@ function Index() {
           </Button>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {SPECIALTIES.slice(0, 6).map((s) => (
+        <div className="mt-8 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {SPECIALTIES.slice(0, 6).map((s, index) => (
             <Link
               key={s.id}
               to="/doctors"
               search={{ specialty: s.id }}
-              className="surface lift grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 p-4"
+              className="group grid min-h-44 grid-cols-[auto_minmax(0,1fr)] content-between gap-4 bg-card p-6 transition-colors hover:bg-primary-soft"
             >
-              <IconTile name={s.icon} />
+              <span className="text-xs font-bold text-primary/60">0{index + 1}</span>
               <span className="min-w-0">
-                <span className="block truncate font-display font-bold">{s.name}</span>
-                <span className="block truncate text-xs text-muted-foreground">{s.blurb}</span>
+                <IconTile name={s.icon} className="mb-5" />
+                <span className="block font-display text-lg font-bold text-primary-deep">{s.name}</span>
+                <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">{s.blurb}</span>
               </span>
-              <ArrowRight className="size-4 shrink-0 text-primary" />
+              <ArrowUpRight className="col-start-2 size-4 shrink-0 justify-self-end text-primary transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           ))}
         </div>
       </section>
 
       {/* Featured doctors */}
-      <section className="border-t border-border bg-card">
+      <section className="border-t border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
           <div className="grid gap-4 sm:flex sm:items-end sm:justify-between">
             <div>
@@ -236,6 +213,26 @@ function Index() {
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {DOCTORS.slice(0, 3).map((d) => (
               <DoctorCard key={d.id} doctor={d} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-card">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.7fr_1.3fr] lg:py-20">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">Royal Medical Center Doha</p>
+            <h2 className="mt-3 text-3xl font-extrabold text-primary-deep sm:text-4xl">Care within reach.</h2>
+            <p className="mt-3 max-w-md text-muted-foreground">Contact either RMC branch directly for appointments and current availability.</p>
+          </div>
+          <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2">
+            {BRANCHES.map((branch) => (
+              <a key={branch.id} href={branch.directions} target="_blank" rel="noreferrer" className="group bg-card p-6 transition-colors hover:bg-primary-soft">
+                <MapPin className="size-5 text-primary" />
+                <h3 className="mt-5 text-xl font-bold text-primary-deep">{branch.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{branch.address}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">{branch.phone}<ArrowUpRight className="size-4" /></span>
+              </a>
             ))}
           </div>
         </div>

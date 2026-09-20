@@ -7,14 +7,14 @@
 export type BranchId = "hilal" | "gharrafa";
 
 export interface Branch { id: BranchId; name: string; nameAr: string; phone: string; address: string; directions: string; }
-export interface Specialty { id: string; name: string; nameAr: string; blurb: string; category: "Clinical Services" | "Diagnostics" | "Specialized Procedures"; icon: string; }
+export interface Specialty { id: string; name: string; nameAr: string; blurb: string; category: "Medical Departments" | "Support Services"; icon: string; }
 export interface Doctor {
   id: string; name: string; title: string; specialtyId: string; gender: "male" | "female";
   expertise: string[]; services: string[]; sourceUrl: string; imageUrl?: string;
   branch?: BranchId; languages?: string[]; experience?: number; about?: string; credentials?: string[];
   consultation?: string[]; insurance?: string[]; nextAvailable?: string; availability?: "This week" | "Next week" | "Today"; slots?: string[];
 }
-export interface ServiceItem { id: string; name: string; category: "Clinical Services" | "Diagnostics" | "Laboratory" | "Pharmacy" | "Specialized Procedures"; description: string; specialtyId?: string; icon: string; }
+export interface ServiceItem { id: string; name: string; category: "Medical Departments" | "Pharmacy & Laboratory Exams" | "Med Technologies"; description: string; specialtyId?: string; icon: string; }
 
 export const BRANCHES: Branch[] = [
  { id:"hilal", name:"Al Hilal", nameAr:"الهلال", phone:"+974 4450 2050", address:"Al Muntazah Street, West Hilal Area, Doha, Qatar", directions:"https://maps.google.com/?q=Royal+Medical+Center+Al+Hilal+Doha" },
@@ -22,19 +22,19 @@ export const BRANCHES: Branch[] = [
 ];
 
 export const SPECIALTIES: Specialty[] = [
- {id:"dentistry",name:"Dentistry",nameAr:"طب الأسنان",blurb:"Oral surgery, cosmetic and pediatric dentistry, orthodontics and endodontics.",category:"Clinical Services",icon:"Smile"},
- {id:"dermatology",name:"Dermatology",nameAr:"طب الأمراض الجلدية",blurb:"Medical dermatology, hair and nail care, and aesthetic treatments.",category:"Clinical Services",icon:"Sparkles"},
- {id:"general-surgery",name:"General Surgery",nameAr:"الجراحة العامة",blurb:"General and laparoscopic surgical consultation and treatment.",category:"Specialized Procedures",icon:"Stethoscope"},
- {id:"hair-transplant",name:"Hair Transplant",nameAr:"زرع الشعر الطبيعي",blurb:"Specialist assessment and surgical hair restoration.",category:"Specialized Procedures",icon:"Scissors"},
- {id:"internal-pulmonary",name:"Internal & Pulmonary Medicine",nameAr:"الطب الداخلي والرئوي",blurb:"General medicine and respiratory disease care.",category:"Clinical Services",icon:"Activity"},
- {id:"obgyn",name:"Obstetrics & Gynecology",nameAr:"طب التوليد والنسائيات",blurb:"Pregnancy, gynecology, infertility and women’s health care.",category:"Clinical Services",icon:"Baby"},
- {id:"ophthalmology",name:"Ophthalmology",nameAr:"طب العيون",blurb:"Eye examinations, diagnostics and ophthalmic surgery.",category:"Clinical Services",icon:"Eye"},
- {id:"orthopedics",name:"Orthopedics",nameAr:"جراحة العظام",blurb:"Orthopedic assessment and treatment for bone and joint conditions.",category:"Clinical Services",icon:"Bone"},
- {id:"pediatrics",name:"Pediatrics",nameAr:"طب الأطفال",blurb:"Child health, development, vaccination and acute care.",category:"Clinical Services",icon:"Baby"},
- {id:"plastic-surgery",name:"Plastic Surgery",nameAr:"الجراحة التجميلية",blurb:"Aesthetic and reconstructive surgical consultations.",category:"Specialized Procedures",icon:"Gem"},
- {id:"psychiatry",name:"Psychiatry",nameAr:"الطب النفسي",blurb:"Psychiatry is listed in RMC’s official department directory.",category:"Clinical Services",icon:"Brain"},
- {id:"urology",name:"Urology",nameAr:"المسالك البولية",blurb:"Assessment and treatment of urinary and male health conditions.",category:"Clinical Services",icon:"Droplets"},
- {id:"vascular-surgery",name:"Vascular Surgery",nameAr:"جراحة الأوعية الدموية",blurb:"Specialist care for vascular and circulation conditions.",category:"Specialized Procedures",icon:"HeartPulse"},
+ {id:"dentistry",name:"Dentistry",nameAr:"طب الأسنان",blurb:"Oral surgery, cosmetic and pediatric dentistry, orthodontics and endodontics.",category:"Medical Departments",icon:"Smile"},
+ {id:"dermatology",name:"Dermatology",nameAr:"طب الأمراض الجلدية",blurb:"Skin, hair and nail care, injectables, body treatments and laser hair removal.",category:"Medical Departments",icon:"Sparkles"},
+ {id:"general-surgery",name:"General Surgery",nameAr:"الجراحة العامة",blurb:"General and laparoscopic surgical consultation and treatment.",category:"Medical Departments",icon:"Stethoscope"},
+ {id:"hair-transplant",name:"Hair Transplant",nameAr:"زرع الشعر الطبيعي",blurb:"Specialist assessment and surgical hair restoration.",category:"Medical Departments",icon:"Scissors"},
+ {id:"internal-pulmonary",name:"Internal & Pulmonary Medicine",nameAr:"الطب الداخلي والرئوي",blurb:"General medicine and respiratory disease care.",category:"Medical Departments",icon:"Activity"},
+ {id:"obgyn",name:"Obstetrics & Gynecology",nameAr:"طب التوليد والنسائيات",blurb:"Pregnancy, gynecology, infertility and women’s health care.",category:"Medical Departments",icon:"Baby"},
+ {id:"ophthalmology",name:"Ophthalmology",nameAr:"طب العيون",blurb:"Eye examinations, diagnostics and ophthalmic surgery.",category:"Medical Departments",icon:"Eye"},
+ {id:"orthopedics",name:"Orthopedics",nameAr:"جراحة العظام",blurb:"Orthopedic assessment and treatment for bone and joint conditions.",category:"Medical Departments",icon:"Bone"},
+ {id:"pediatrics",name:"Pediatrics",nameAr:"طب الأطفال",blurb:"Child health, development, vaccination, acute care and child psychiatry services.",category:"Medical Departments",icon:"Baby"},
+ {id:"plastic-surgery",name:"Plastic Surgery",nameAr:"الجراحة التجميلية",blurb:"Aesthetic and reconstructive surgical consultations.",category:"Medical Departments",icon:"Gem"},
+ {id:"urology",name:"Urology",nameAr:"المسالك البولية",blurb:"Assessment and treatment of urinary and male health conditions.",category:"Medical Departments",icon:"Droplets"},
+ {id:"vascular-surgery",name:"Vascular Surgery",nameAr:"جراحة الأوعية الدموية",blurb:"Specialist care for vascular and circulation conditions.",category:"Medical Departments",icon:"HeartPulse"},
+ {id:"pharmacy-laboratory",name:"Pharmacy & Laboratory Exams",nameAr:"الصيدلية والفحوصات المخبرية",blurb:"RMC’s combined pharmacy and laboratory examination service.",category:"Support Services",icon:"TestTubes"},
 ];
 
 const profile=(id:string,name:string,title:string,specialtyId:string,gender:"male"|"female",expertise:string[],path:string,imageUrl?:string):Doctor=>({id,name,title,specialtyId,gender,expertise,services:expertise,sourceUrl:`https://rmcdoha.com/${path}/`,...(imageUrl?{imageUrl}:{})});
@@ -71,97 +71,40 @@ export const DOCTORS: Doctor[] = [
 ];
 
 export const SERVICES: ServiceItem[] = [
-  {
-    id: "specialist-consultation",
-    name: "Specialist Consultation",
-    category: "Clinical Services",
-    description: "Consultations across RMC’s published medical departments.",
-    icon: "Stethoscope",
-  },
-  {
-    id: "womens-health",
-    name: "Women's Health & Maternity",
-    category: "Clinical Services",
-    description: "Pregnancy care, ultrasound and gynecological services in a private setting.",
-    specialtyId: "obgyn",
-    icon: "Baby",
-  },
-  {
-    id: "child-health",
-    name: "Child Health & Vaccination",
-    category: "Clinical Services",
-    description: "Paediatric consultations, growth monitoring and the full vaccination schedule.",
-    specialtyId: "pediatrics",
-    icon: "Baby",
-  },
-  {
-    id: "imaging",
-    name: "Diagnostic Imaging",
-    category: "Diagnostics",
-    description: "Ultrasound, digital X-ray and duplex studies reported by on-site specialists.",
-    icon: "ScanLine",
-  },
-  {
-    id: "cardiac-diagnostics",
-    name: "Cardiac Diagnostics",
-    category: "Diagnostics",
-    description: "ECG, echocardiography and stress testing with internal-pulmonary review.",
-    specialtyId: "internal-pulmonary",
-    icon: "HeartPulse",
-  },
-  {
-    id: "laboratory",
-    name: "Laboratory Services",
-    category: "Laboratory",
-    description: "Full blood, hormone and microbiology panels with digital result delivery.",
-    icon: "TestTubes",
-  },
-  {
-    id: "health-screening",
-    name: "Health Screening Packages",
-    category: "Laboratory",
-    description: "Structured annual check-ups for adults, executives and pre-employment needs.",
-    icon: "ClipboardCheck",
-  },
+  ...SPECIALTIES.filter((specialty) => specialty.category === "Medical Departments").map((specialty) => ({
+    id: specialty.id,
+    name: specialty.name,
+    description: specialty.blurb,
+    category: "Medical Departments" as const,
+    specialtyId: specialty.id,
+    icon: specialty.icon,
+  })),
   {
     id: "pharmacy",
     name: "Pharmacy",
-    category: "Pharmacy",
-    description: "Pharmacy services and prescription support.",
+    category: "Pharmacy & Laboratory Exams",
+    description: "RMC’s published pharmacy service.",
     icon: "Pill",
   },
   {
-    id: "hair-restoration",
-    name: "Hair Restoration",
-    category: "Specialized Procedures",
-    description: "Medical hair loss assessment, PRP therapy and transplant procedures.",
-    specialtyId: "hair-transplant",
-    icon: "Scissors",
+    id: "laboratory-exams",
+    name: "Laboratory Exams",
+    category: "Pharmacy & Laboratory Exams",
+    description: "RMC’s published laboratory examination service.",
+    icon: "TestTubes",
   },
-  {
-    id: "aesthetic-surgery",
-    name: "Aesthetic & Reconstructive Surgery",
-    category: "Specialized Procedures",
-    description: "Plastic surgery consultations and procedures with dedicated recovery planning.",
-    specialtyId: "plastic-surgery",
-    icon: "Gem",
-  },
-  {
-    id: "vein-care",
-    name: "Vein & Circulation Care",
-    category: "Specialized Procedures",
-    description: "Varicose vein treatment, diabetic foot care and arterial assessment.",
-    specialtyId: "vascular-surgery",
-    icon: "Activity",
-  },
-  {
-    id: "day-surgery",
-    name: "Day Surgery",
-    category: "Specialized Procedures",
-    description: "Laparoscopic and minor procedures with same-day discharge pathways.",
-    specialtyId: "general-surgery",
-    icon: "Scissors",
-  },
+  ...([
+    ["vellashape-iii", "VelaShape III", "Body contouring technology published by RMC."],
+    ["ematrix", "eMatrix", "Skin resurfacing technology published by RMC."],
+    ["sculpsure", "SculpSure", "Non-invasive body contouring technology published by RMC."],
+    ["synetica", "Synetica", "Medical technology available through RMC."],
+    ["cooltech", "Cooltech", "Body contouring technology published by RMC."],
+    ["hydrafacial", "Hydrafacial", "Skin treatment technology published by RMC."],
+    ["ultherapy", "Ultherapy", "Ultrasound-based aesthetic technology published by RMC."],
+    ["prp", "PRP", "Platelet-rich plasma treatment published by RMC."],
+    ["rf", "RF", "Radiofrequency treatment technology published by RMC."],
+    ["hifu", "HIFU", "Focused ultrasound technology published by RMC."],
+  ] as const).map(([id, name, description]) => ({ id, name, description, category: "Med Technologies" as const, icon: "Sparkles" })),
 ];
 
 export const specialtyById = (id: string) => SPECIALTIES.find((s) => s.id === id);
