@@ -33,7 +33,7 @@ const NAV = [
 function LanguageToggle() {
   const { lang, setLang } = useLang();
   return (
-    <div className="flex items-center rounded-md border border-border bg-card p-0.5 text-xs font-semibold">
+    <div className="flex items-center rounded-md border border-primary-foreground/15 bg-primary-foreground/5 p-0.5 text-xs font-semibold">
       {(["en", "ar"] as const).map((l) => (
         <Button
           key={l}
@@ -43,7 +43,7 @@ function LanguageToggle() {
           onClick={() => setLang(l)}
           className={cn(
             "h-7 rounded px-2.5 py-1 transition-colors",
-            lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+             lang === l ? "bg-primary text-primary-deep" : "text-primary-foreground/55 hover:text-primary-foreground",
           )}
         >
           {l === "en" ? "English" : "العربية"}

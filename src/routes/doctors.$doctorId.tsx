@@ -36,6 +36,8 @@ export const Route = createFileRoute("/doctors/$doctorId")({
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:type", content: "profile" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
@@ -50,14 +52,14 @@ function DoctorProfile() {
 
   return (
     <PublicShell>
-      <section className="soft-gradient border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:py-14">
-          <nav className="text-xs text-muted-foreground">
-            <Link to="/doctors" className="hover:text-primary">
+      <section className="command-grid border-b border-primary-foreground/10 bg-primary-deep text-primary-foreground">
+        <div className="mx-auto max-w-[90rem] px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
+          <nav className="text-xs text-primary-foreground/50">
+            <Link to="/doctors" className="hover:text-primary-foreground">
               Find a Doctor
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-foreground">{doctor.name}</span>
+            <span className="text-primary-foreground">{doctor.name}</span>
           </nav>
 
           <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
@@ -68,10 +70,10 @@ function DoctorProfile() {
                 className="size-20 rounded-3xl text-2xl sm:size-24"
               />
               <div className="min-w-0">
-                <h1 className="text-2xl font-extrabold sm:text-4xl">{doctor.name}</h1>
+                 <h1 className="text-3xl font-bold text-primary-foreground sm:text-5xl">{doctor.name}</h1>
                 <p className="mt-1 text-base font-semibold text-primary">{specialty?.name}</p>
-                <p className="text-sm text-muted-foreground">{doctor.title}</p>
-                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
+                 <p className="text-sm text-primary-foreground/60">{doctor.title}</p>
+                 <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-primary-foreground/50">
                   <span className="inline-flex items-center gap-1.5">
                     <MapPin className="size-3.5" /> Royal Medical Center, Doha
                   </span>
