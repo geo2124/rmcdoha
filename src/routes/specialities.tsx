@@ -40,16 +40,20 @@ function SpecialitiesPage() {
           const items = SPECIALTIES.filter((s) => s.category === group);
           if (items.length === 0) return null;
           return (
-            <section key={group} className="mb-14">
-              <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{group}</h2>
-              <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {items.map((s) => {
+            <section key={group} className="mb-16 grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)]">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">RMC Department Group</p>
+                <h2 className="mt-2 text-2xl font-bold text-primary-deep">{group}</h2>
+                <p className="mt-2 text-sm text-muted-foreground">Explore the published departments and their specialist teams.</p>
+              </div>
+              <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2">
+                {items.map((s, index) => {
                   const count = doctorsBySpecialty(s.id).length;
                   return (
-                    <article key={s.id} className="surface lift flex h-full flex-col gap-4 p-6">
-                      <IconTile name={s.icon} className="size-12" />
+                    <article key={s.id} className="group flex min-h-72 flex-col gap-4 bg-card p-6 transition-colors hover:bg-primary-soft">
+                      <div className="flex items-start justify-between"><IconTile name={s.icon} className="size-12" /><span className="text-xs font-bold text-primary/50">{String(index + 1).padStart(2, "0")}</span></div>
                       <div>
-                        <h3 className="font-display text-lg font-bold">{s.name}</h3>
+                        <h3 className="font-display text-xl font-bold text-primary-deep">{s.name}</h3>
                         <p className="text-xs text-muted-foreground">{s.nameAr}</p>
                         <p className="mt-2 text-sm text-muted-foreground">{s.blurb}</p>
                       </div>

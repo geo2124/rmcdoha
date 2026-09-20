@@ -75,7 +75,7 @@ function Index() {
             </div>
 
             <div className="mt-10 grid max-w-xl grid-cols-3 border-t border-border pt-5 text-xs text-muted-foreground">
-              <span className="pe-3"><strong className="block text-lg text-primary-deep">{SPECIALTIES.length}</strong>{t("home.stat1")}</span>
+              <span className="pe-3"><strong className="block text-lg text-primary-deep">{SPECIALTIES.length}</strong>Departments</span>
               <span className="border-s border-border px-3"><strong className="block text-lg text-primary-deep">{DOCTORS.length}</strong>Published doctors</span>
               <span className="border-s border-border ps-3"><strong className="block text-lg text-primary-deep">2</strong>Doha branches</span>
             </div>

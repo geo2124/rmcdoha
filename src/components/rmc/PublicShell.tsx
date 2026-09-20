@@ -34,17 +34,19 @@ function LanguageToggle() {
   return (
     <div className="flex items-center rounded-md border border-border bg-card p-0.5 text-xs font-semibold">
       {(["en", "ar"] as const).map((l) => (
-        <button
+        <Button
           key={l}
           type="button"
+          variant="ghost"
+          size="sm"
           onClick={() => setLang(l)}
           className={cn(
-            "rounded px-2.5 py-1 transition-colors",
+            "h-7 rounded px-2.5 py-1 transition-colors",
             lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
           )}
         >
           {l === "en" ? "English" : "العربية"}
-        </button>
+        </Button>
       ))}
     </div>
   );
@@ -82,14 +84,16 @@ function SiteHeader() {
           <Button asChild variant="hero" size="sm" className="hidden lg:inline-flex">
             <Link to="/appointments">{t("nav.request")}</Link>
           </Button>
-          <button
+          <Button
             type="button"
+            variant="outline"
+            size="icon"
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
-            className="grid size-10 place-items-center rounded-md border border-border xl:hidden"
+            className="size-10 rounded-md xl:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+          </Button>
         </div>
       </div>
 

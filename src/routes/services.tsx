@@ -47,31 +47,31 @@ function ServicesPage() {
       >
         <div className="flex flex-wrap gap-2">
           {CATEGORIES.map((c) => (
-            <button
+            <Button
               key={c}
               type="button"
+              variant={category === c ? "hero" : "quiet"}
+              size="sm"
               onClick={() => setCategory(c)}
-              className={cn(
-                "rounded-full border px-4 py-2 text-xs font-semibold transition-colors",
-                category === c
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
-              )}
+              className={cn("rounded-md", category !== c && "text-muted-foreground")}
             >
               {c}
-            </button>
+            </Button>
           ))}
         </div>
       </PageHeader>
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((s) => (
-            <article key={s.id} className="surface lift flex h-full flex-col gap-4 p-6">
-              <IconTile name={s.icon} className="size-12" />
+        <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((s, index) => (
+            <article key={s.id} className="group flex min-h-72 flex-col gap-4 bg-card p-6 transition-colors hover:bg-primary-soft">
+              <div className="flex items-start justify-between">
+                <IconTile name={s.icon} className="size-12" />
+                <span className="text-xs font-bold text-primary/50">{String(index + 1).padStart(2, "0")}</span>
+              </div>
               <div>
                 <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-primary">{s.category}</p>
-                <h3 className="mt-1 font-display text-lg font-bold">{s.name}</h3>
+                <h3 className="mt-1 font-display text-xl font-bold text-primary-deep">{s.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.description}</p>
               </div>
               <div className="mt-auto flex flex-wrap gap-2">
