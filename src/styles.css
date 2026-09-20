@@ -59,15 +59,15 @@
   --color-midnight: oklch(0.18 0.05 250);
   --color-midnight-raised: oklch(0.26 0.07 250);
 
-  --shadow-card: 0 4px 6px -1px oklch(0 0 0 / 0.1), 0 2px 4px -2px oklch(0 0 0 / 0.1);
-  --shadow-lift: 0 20px 25px -5px oklch(0 0 0 / 0.2), 0 8px 10px -6px oklch(0 0 0 / 0.2);
+  --shadow-card: 0 4px 6px -1px oklch(0 0 0 / 0.3), 0 2px 4px -2px oklch(0 0 0 / 0.3);
+  --shadow-lift: 0 20px 25px -5px oklch(0 0 0 / 0.5), 0 8px 10px -6px oklch(0 0 0 / 0.5);
 }
 
 :root {
   --radius: 0.5rem;
 
   /* Midnight Signal Palette in OKLCH */
-  --background: oklch(0.18 0.05 250); /* #061B2D */
+  --background: oklch(0.18 0.05 250); /* #061B2D - Midnight */
   --foreground: oklch(0.97 0.01 230); /* #F5F8FA - Ice */
 
   --card: oklch(0.26 0.07 250); /* #0B3454 - Deep Blue */
@@ -77,8 +77,8 @@
 
   --primary: oklch(0.64 0.15 194); /* #00A9A5 - Teal */
   --primary-foreground: oklch(0.18 0.05 250); /* Midnight text on teal */
-  --primary-soft: oklch(0.64 0.15 194 / 0.1);
-  --primary-deep: oklch(0.97 0.01 230); /* Ice color for headings */
+  --primary-soft: oklch(0.64 0.15 194 / 0.15);
+  --primary-deep: oklch(0.13 0.04 250); /* Even darker Midnight for contrast */
 
   --secondary: oklch(0.26 0.07 250);
   --secondary-foreground: oklch(0.97 0.01 230);
@@ -101,8 +101,8 @@
   --urgent-soft: oklch(0.78 0.14 85 / 0.15);
   --success: oklch(0.64 0.15 194);
 
-  --border: oklch(0.97 0.01 230 / 0.1);
-  --input: oklch(0.97 0.01 230 / 0.05);
+  --border: oklch(0.97 0.01 230 / 0.15);
+  --input: oklch(0.97 0.01 230 / 0.1);
   --ring: oklch(0.64 0.15 194);
 
   --chart-1: oklch(0.64 0.15 194);
