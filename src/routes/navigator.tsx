@@ -34,6 +34,8 @@ export const Route = createFileRoute("/navigator")({
         property: "og:description",
         content: "An intelligent guide to help you find the right next step at Royal Medical Center.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: NavigatorPage,

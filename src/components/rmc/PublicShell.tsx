@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
+  ArrowUpRight,
   CalendarDays,
   Facebook,
   Home,
@@ -32,7 +33,7 @@ const NAV = [
 function LanguageToggle() {
   const { lang, setLang } = useLang();
   return (
-    <div className="flex items-center rounded-md border border-border bg-card p-0.5 text-xs font-semibold">
+    <div className="flex items-center rounded-md border border-primary-foreground/15 bg-primary-foreground/5 p-0.5 text-xs font-semibold">
       {(["en", "ar"] as const).map((l) => (
         <Button
           key={l}
@@ -42,7 +43,7 @@ function LanguageToggle() {
           onClick={() => setLang(l)}
           className={cn(
             "h-7 rounded px-2.5 py-1 transition-colors",
-            lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+             lang === l ? "bg-primary text-primary-deep" : "text-primary-foreground/55 hover:text-primary-foreground",
           )}
         >
           {l === "en" ? "English" : "العربية"}
@@ -57,8 +58,8 @@ function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-card/92 backdrop-blur-xl">
-      <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center gap-4 px-4 sm:px-6 lg:h-20">
+    <header className="sticky top-0 z-50 border-b border-primary-foreground/10 bg-midnight text-primary-foreground shadow-[var(--shadow-card)]">
+      <div className="mx-auto flex h-[4.75rem] max-w-[90rem] items-center gap-4 px-4 sm:px-6 lg:h-24 lg:px-10">
         <Logo compact />
 
         <nav className="ms-auto hidden items-center gap-1 xl:flex">
@@ -67,7 +68,7 @@ function SiteHeader() {
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              className="border-b-2 border-transparent px-2 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary-deep data-[status=active]:border-primary data-[status=active]:text-primary-deep"
+               className="border-b border-transparent px-2 py-2 text-sm font-medium text-primary-foreground/65 transition-colors hover:text-primary-foreground data-[status=active]:border-primary data-[status=active]:text-primary-foreground"
             >
               {t(item.key)}
             </Link>
@@ -90,7 +91,7 @@ function SiteHeader() {
             size="icon"
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
-            className="size-10 rounded-md xl:hidden"
+            className="size-10 border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground hover:bg-primary-foreground/10 xl:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </Button>
@@ -98,7 +99,7 @@ function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-card px-4 pb-5 pt-3 xl:hidden">
+        <div className="border-t border-primary-foreground/10 bg-primary-deep px-4 pb-5 pt-3 xl:hidden">
           <nav className="grid gap-1">
             {NAV.map((item) => (
               <Link
@@ -106,7 +107,7 @@ function SiteHeader() {
                 to={item.to}
                 onClick={() => setOpen(false)}
                 activeOptions={{ exact: item.to === "/" }}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground data-[status=active]:bg-accent data-[status=active]:text-accent-foreground"
+                className="rounded-md px-3 py-2.5 text-sm font-medium text-primary-foreground/70 data-[status=active]:bg-primary-foreground/10 data-[status=active]:text-primary-foreground"
               >
                 {t(item.key)}
               </Link>
@@ -173,13 +174,13 @@ function MobileTabBar() {
 function SiteFooter() {
   const { t } = useLang();
   return (
-    <footer className="mt-24 border-t border-primary-deep bg-primary-deep text-primary-foreground">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4">
+    <footer className="mt-24 border-t border-primary-foreground/10 bg-midnight text-foreground">
+      <div className="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.4fr_1fr_0.8fr_0.9fr] lg:px-10 lg:py-20">
         <div>
           <div className="flex items-center gap-3">
             <LogoMark />
             <div>
-              <p className="font-display text-sm font-extrabold uppercase tracking-[0.1em] text-primary-deep">
+              <p className="font-display text-sm font-extrabold uppercase tracking-[0.1em] text-primary-foreground">
                 {t("brand.name")}
               </p>
                <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/65">{t("brand.tagline")}</p>
@@ -233,20 +234,20 @@ function SiteFooter() {
         <div>
           <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-gold">Explore</h4>
           <ul className="mt-4 space-y-2.5 text-sm text-primary-foreground/70">
-            <li><Link to="/doctors" className="hover:text-primary">Doctors</Link></li>
-            <li><Link to="/specialities" className="hover:text-primary">Specialities</Link></li>
-            <li><Link to="/services" className="hover:text-primary">Services</Link></li>
-            <li><Link to="/appointments" className="hover:text-primary">Appointments</Link></li>
-            <li><Link to="/navigator" className="hover:text-primary">Health Navigator</Link></li>
-            <li><Link to="/emergency" className="hover:text-primary">Emergency</Link></li>
+             <li><Link to="/doctors" className="hover:text-primary-foreground">Doctors</Link></li>
+             <li><Link to="/specialities" className="hover:text-primary-foreground">Specialities</Link></li>
+             <li><Link to="/services" className="hover:text-primary-foreground">Services</Link></li>
+             <li><Link to="/appointments" className="hover:text-primary-foreground">Appointments</Link></li>
+             <li><Link to="/navigator" className="hover:text-primary-foreground">Health Navigator</Link></li>
+             <li><Link to="/emergency" className="hover:text-primary-foreground">Emergency</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-xs font-bold uppercase tracking-[0.18em] text-gold">Platform</h4>
           <ul className="mt-4 space-y-2.5 text-sm text-primary-foreground/70">
-            <li><Link to="/portal" className="hover:text-primary">Patient Portal</Link></li>
-            <li><Link to="/admin" className="hover:text-primary">Management Demo</Link></li>
+             <li><Link to="/portal" className="hover:text-primary-foreground">Patient Portal</Link></li>
+             <li><Link to="/admin" className="hover:text-primary-foreground">Management Demo</Link></li>
             <li><span className="cursor-default">Privacy</span></li>
             <li><span className="cursor-default">Terms</span></li>
           </ul>
@@ -286,13 +287,14 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-border bg-card">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-20">
+    <section className="relative overflow-hidden border-b border-primary-foreground/10 bg-midnight text-foreground">
+      <div className="command-grid absolute inset-0 opacity-40" />
+      <div className="relative mx-auto max-w-[90rem] px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
         {eyebrow && (
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold">{eyebrow}</p>
         )}
-        <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-tight text-primary-deep sm:text-5xl lg:text-6xl">{title}</h1>
-        {subtitle && <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">{subtitle}</p>}
+        <h1 className="mt-4 max-w-5xl text-4xl font-bold leading-[1.06] text-primary-foreground sm:text-5xl lg:text-7xl">{title}</h1>
+        {subtitle && <p className="mt-5 max-w-2xl text-base leading-relaxed text-primary-foreground/65 sm:text-lg">{subtitle}</p>}
         {children && <div className="mt-8">{children}</div>}
       </div>
     </section>

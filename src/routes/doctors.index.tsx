@@ -30,6 +30,8 @@ export const Route = createFileRoute("/doctors/")({
         property: "og:description",
         content: "Filter RMC consultants and specialists and book an appointment in a few taps.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: DoctorsPage,
@@ -45,18 +47,18 @@ function Chip({
   children: React.ReactNode;
 }) {
   return (
-    <button
+    <Button
       type="button"
+      variant={active ? "navigator" : "quiet"}
+      size="sm"
       onClick={onClick}
       className={cn(
-        "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
-        active
-          ? "border-primary bg-primary text-primary-foreground"
-          : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
+        "h-auto rounded-sm px-3 py-1.5 text-xs",
+        !active && "text-muted-foreground",
       )}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 
@@ -130,9 +132,9 @@ function DoctorsPage() {
         </div>
       </PageHeader>
 
-      <div className="mx-auto max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid lg:grid-cols-[17rem_minmax(0,1fr)]">
+      <div className="mx-auto max-w-[90rem] gap-10 px-4 py-16 sm:px-6 lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:px-10 lg:py-24">
         <aside className="hidden lg:block">
-          <div className="surface sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto p-5">{filterPanel}</div>
+          <div className="sticky top-28 max-h-[calc(100vh-9rem)] overflow-y-auto border-s-2 border-primary bg-card p-6 shadow-[var(--shadow-card)]">{filterPanel}</div>
         </aside>
 
         <div>

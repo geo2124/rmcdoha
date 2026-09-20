@@ -15,6 +15,8 @@ export const Route = createFileRoute("/emergency")({
       },
       { property: "og:title", content: "Emergency Information — Royal Medical Center Doha" },
       { property: "og:description", content: "Call, get directions, and know what to do in an emergency." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: EmergencyPage,

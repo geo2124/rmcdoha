@@ -1,6 +1,6 @@
 # Roadmap
 
-- [x] Apply selected Clinical Excellence design system across public pages
-- [x] Rebuild homepage with verified RMC content and stronger visual hierarchy
-- [x] Align specialties and services with official categories and subcategories
-- [x] Verify desktop and mobile presentation, interactions, metadata, and build
+- [x] Replace the public visual system with Midnight Signal and Syne / Plus Jakarta Sans
+- [x] Rebuild the homepage in the selected Elite Clinical Elegance composition
+- [x] Redesign shared navigation, page headers, doctor cards, and footer across public pages
+- [x] Verify public flows, route metadata, desktop/mobile presentation, and build

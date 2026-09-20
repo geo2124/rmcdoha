@@ -30,6 +30,8 @@ export const Route = createFileRoute("/portal")({
       },
       { property: "og:title", content: "Patient Portal — Royal Medical Center Doha" },
       { property: "og:description", content: "Your appointments and follow-up care in one place." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: PortalPage,
