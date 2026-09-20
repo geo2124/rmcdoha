@@ -162,7 +162,7 @@ export const SERVICES: ServiceItem[] = [
     specialtyId: "general-surgery",
     icon: "Scissors",
   },
-  ...[
+  ...([
     ["vellashape-iii", "VelaShape III", "Body contouring technology published by RMC."],
     ["ematrix", "eMatrix", "Skin resurfacing technology published by RMC."],
     ["sculpsure", "SculpSure", "Non-invasive body contouring technology published by RMC."],
@@ -173,7 +173,7 @@ export const SERVICES: ServiceItem[] = [
     ["prp", "PRP", "Platelet-rich plasma treatment published by RMC."],
     ["rf", "RF", "Radiofrequency treatment technology published by RMC."],
     ["hifu", "HIFU", "Focused ultrasound technology published by RMC."],
-  ].map(([id, name, description]) => ({ id, name, description, category: "Med Technologies" as const, icon: "Sparkles" })),
+  ] as const).map(([id, name, description]) => ({ id, name, description, category: "Med Technologies" as const, icon: "Sparkles" })),
 ];
 
 export const specialtyById = (id: string) => SPECIALTIES.find((s) => s.id === id);
