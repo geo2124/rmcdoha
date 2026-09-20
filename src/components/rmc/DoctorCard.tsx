@@ -33,14 +33,14 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
   const specialty = specialtyById(doctor.specialtyId);
 
   return (
-    <article className="surface lift group flex h-full flex-col overflow-hidden">
-      <div className="relative h-52 overflow-hidden bg-primary-soft">
+    <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-[var(--shadow-card)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--shadow-lift)]">
+      <div className="relative h-64 overflow-hidden bg-muted">
         <DoctorAvatar name={doctor.name} {...(doctor.imageUrl ? { imageUrl: doctor.imageUrl } : {})} className="size-full rounded-none object-contain object-bottom transition-transform duration-500 group-hover:scale-[1.025]" />
-        <span className="absolute bottom-3 start-3 rounded bg-card/92 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-primary-deep backdrop-blur-sm">
+        <span className="absolute bottom-0 start-0 bg-primary-deep px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-primary-foreground">
           {specialty?.name}
         </span>
       </div>
-      <div className="flex flex-1 flex-col gap-4 p-5">
+      <div className="flex flex-1 flex-col gap-4 p-6">
       <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-4">
         <div className="min-w-0">
           <h3 className="truncate font-display text-xl font-bold text-primary-deep">{doctor.name}</h3>
